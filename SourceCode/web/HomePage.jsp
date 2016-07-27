@@ -15,7 +15,7 @@
             body {
                 background-color: #D7E1EB;
             }
-            
+
             .navbar {
                 background-color: transparent;
                 background: transparent;
@@ -24,27 +24,27 @@
 
             .navbar .nav > li > a {
                 font-size: 16px;
-                color: #000000; 
+                color: #FFFFFF; 
             }
 
             .navbar .nav > li > a:hover {
-                color: #0268A6; 
+                color: #74B3E6; 
             }
 
             #nav-name {
                 font-size: 25px;
-                color: #000000; 
+                color: #FFFFFF; 
             }
 
             .jumbotron {
                 padding-top: 80px;
-                /*background-image: url(images/s4a.jpg);
+                background-image: url(http://www.skechers.com.my/admin/album/1417940696IMG_9297-M.jpg);
                 background-repeat: no-repeat;
-                background-size: 100%;*/
+                background-size: 100%;
             }
 
             #front {
-                background-color: rgba(46, 51, 115, 0.65);
+                background-color: rgba(1, 1, 1, 0.5);
                 height: 250px;
                 color: white;
             }
@@ -53,6 +53,22 @@
                 background-color: #0268A6;
             }
         </style>
+
+        <script type="text/javascript">
+//            $('#su').click(function(e){
+//                    e.preventDefault();
+//                    $('#signinodal').modal('hide').on('hidden.bs.modal', function (e) {
+//                        $('#registermodal').modal('show');
+//                                $(this).off('hidden.bs.modal'); // Remove the 'on' event binding
+//                        });
+            $('#su').click(function() {
+                $('#signinmodal').modal('hide');
+                $('#signinodal').on('hidden', function() {
+                    // Load up a new modal...
+                    $('#registermodal).modal('show')
+                });
+            });
+        </script>
     </head>
 
     <body>
@@ -73,13 +89,13 @@
                         <li><a href="#about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" data-toggle="modal" data-target="#registermodal"><span class="glyphicon glyphicon-user"></span>My Account</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#signinmodal"><span class="glyphicon glyphicon-user"></span>My Account</a></li>
                         <!-- Register Modal -->
-                        <div class="modal fade" id="registermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal fade" id="signinmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" id="myModalLabel">Sign In</h4>
                                     </div>
                                     <div class="modal-body">
@@ -93,7 +109,36 @@
                                             <div class="form-group">
                                                 <button class="btn btn-primary btn-lg btn-block">Sign In</button>
                                                 <br>
-                                                <span class="pull-right"><a href="SignUp.jsp">Create an account</a></span>
+                                                <span class="pull-right"><a href="#" id="su" data-toggle="modal" data-target="#registermodal">Create an account</a></span>
+
+                                                <div class="modal fade" id="registermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="container" style="width: 500px; margin-top: 50px;">
+                                                            <div class="panel panel-primary">
+                                                                <div class="panel-heading">
+                                                                    <h3 class="panel-title" align="center">Create your own Profile</h3>
+                                                                </div>
+                                                                <div class="panel-body" align="center">
+                                                                    <span style="color: red;">${message}</span><br><br>
+                                                                    <div>
+                                                                        <form action="" method="post">   
+                                                                            <div class="form-group"> 
+                                                                                <input type="text" name="firstname" placeholder="First Name" class="form-control" style="width:369px;"><br/>
+                                                                                <input type="text" name="middlename" placeholder="Middle Name" class="form-control" style="width:369px;"><br/>
+                                                                                <input type="text" name="lastname" placeholder="Last Name" class="form-control" style="width:369px;"><br/>
+                                                                                <input type="text" name="username" placeholder="Username" class="form-control" style="width:369px;"><br/>
+                                                                                <input type="text" name="email" placeholder="Email" class="form-control" style="width:369px;"><br/>
+                                                                                <input type="password" name="password" placeholder="Password" class="form-control" style="width:369px;"><br/>
+                                                                                <input type="password" name="verifypassword" placeholder="Confirm Password" class="form-control" style="width:369px;">
+                                                                            </div>
+                                                                            <input type="submit" class="btn btn-primary btn-lg" value="Sign Up"/> 
+                                                                        </form>
+                                                                    </div>   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -109,7 +154,7 @@
             <div class="container" id="front">
                 <h1>Hello, world!</h1>
                 <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
             </div>
         </div>
 
