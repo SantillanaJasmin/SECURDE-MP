@@ -109,35 +109,7 @@
                                             <div class="form-group">
                                                 <button class="btn btn-primary btn-lg btn-block">Sign In</button>
                                                 <br>
-                                                <span class="pull-right"><a href="#" id="su" data-toggle="modal" data-target="#registermodal">Create an account</a></span>
-
-                                                <div class="modal fade" id="registermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="container" style="width: 500px; margin-top: 50px;">
-                                                            <div class="panel panel-primary">
-                                                                <div class="panel-heading">
-                                                                    <h3 class="panel-title" align="center">Create your own Profile</h3>
-                                                                </div>
-                                                                <div class="panel-body" align="center">
-                                                                    <span style="color: red;">${message}</span><br><br>
-                                                                    <div>
-                                                                        <form action="" method="post">   
-                                                                            <div class="form-group"> 
-                                                                                <input type="text" name="firstname" placeholder="First Name" class="form-control" style="width:369px;"><br/>
-                                                                                <input type="text" name="middlename" placeholder="Middle Name" class="form-control" style="width:369px;"><br/>
-                                                                                <input type="text" name="lastname" placeholder="Last Name" class="form-control" style="width:369px;"><br/>
-                                                                                <input type="text" name="username" placeholder="Username" class="form-control" style="width:369px;"><br/>
-                                                                                <input type="text" name="email" placeholder="Email" class="form-control" style="width:369px;"><br/>
-                                                                                <input type="password" name="password" placeholder="Password" class="form-control" style="width:369px;"><br/>
-                                                                                <input type="password" name="verifypassword" placeholder="Confirm Password" class="form-control" style="width:369px;">
-                                                                            </div>
-                                                                            <input type="submit" class="btn btn-primary btn-lg" value="Sign Up"/> 
-                                                                        </form>
-                                                                    </div>   
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <span class="pull-right"><a href="SignUp.jsp">Create an account</a></span>
                                                 </div>
                                             </div>
                                         </form>
