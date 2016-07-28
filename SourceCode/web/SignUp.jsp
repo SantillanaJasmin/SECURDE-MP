@@ -1,58 +1,35 @@
-<%-- 
-    Document   : SignUp
-    Created on : Mar 22, 2015, 6:36:46 PM
-    Author     : Jasmin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sign Up</title>
-        <link href="css/bootstrap-theme.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <script src = "js/jquery.js"></script>
-        <style type="text/css">    
-            .alert 
-            {
-                padding: 8px 35px 8px 14px;
-                margin-bottom: 18px;
-                length: 369px;
-                text-shadow: 1px 0 rgba(255, 255, 255, 0.5);
-                background-color: #fcf8e3;
-                border: 1px solid #fbeed5;
-                -webkit-border-radius: 4px;
-                -moz-border-radius: 4px;
-                border-radius: 4px;
-                color: #c09853;
-            }
-            
-            .navbar {
-                background-color: transparent;
-                background: transparent;
-                border-color: transparent; 
-            } 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <title>Sign Up</title>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="starter-template.css" rel="stylesheet">
+
+        <style type="text/css">
             .navbar .nav > li > a {
                 font-size: 16px;
-                color: #000000; 
+                color: #FFFFFF; 
             }
 
             .navbar .nav > li > a:hover {
-                color: #0268A6; 
+                color: #C10E1F;  
             }
 
             #nav-name {
                 font-size: 25px;
-                color: #000000; 
+                color: #FFFFFF; 
             }
-        </style>    
+        </style>
     </head>
-    
+
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -102,31 +79,43 @@
         </nav>
 
         <br/><br/><br/>
-        
-        <div align="center">
-            <br><br>
-            <p style="font-size: 30px; font-weight:bold;"> &nbsp Create your own Profile</p>
-            <span style="color: red;">${message}</span><br><br>
-            <div>
-                <form action="" method="post">   
-                    <div class="form-group"> 
-                        <input type="text" name="firstname" placeholder="First Name" class="form-control" style="width:369px;"><br/>
-                        <input type="text" name="middlename" placeholder="Middle Name" class="form-control" style="width:369px;"><br/>
-                        <input type="text" name="lastname" placeholder="Last Name" class="form-control" style="width:369px;"><br/>
-                        <input type="text" name="username" placeholder="Username" class="form-control" style="width:369px;"><br/>
-                        <input type="text" name="email" placeholder="Email" class="form-control" style="width:369px;"><br/>
-                        <input type="password" name="password" placeholder="Password" class="form-control" style="width:369px;"><br/>
-                        <input type="password" name="verifypassword" placeholder="Confirm Password" class="form-control" style="width:369px;">
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-lg" value="Sign Up"/> 
-                </form>
-            </div>   
+        <div class="container" style="width: 500px; margin-top: 50px;">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" align="center">Create your own Profile</h3>
+                </div>
+                <div class="panel-body" align="center">
+                    <span style="color: red;">${message}</span><br><br>
+                    <div>
+                        <form action="" method="post">   
+                            <div class="form-group"> 
+                                <input type="text" name="firstname" placeholder="First Name" class="form-control" style="width:369px;"><br/>
+                                <input type="text" name="middlename" placeholder="Middle Name" class="form-control" style="width:369px;"><br/>
+                                <input type="text" name="lastname" placeholder="Last Name" class="form-control" style="width:369px;"><br/>
+                                <input type="text" name="username" placeholder="Username" class="form-control" style="width:369px;" required><br/>
+                                <input type="password" name="password" placeholder="Password" class="form-control" style="width:369px;"  required><br/>
+                                <input type="password" name="verifypassword" placeholder="Confirm Password" class="form-control" style="width:369px;" required="">
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-lg" value="Sign Up"/> 
+                        </form>
+                    </div>   
+                </div>
+            </div>
         </div>
-            
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </body>
+
+
+        <hr>
+
+        <footer>
+            <p>&copy; 2016 Company, Inc.</p>
+        </footer>
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
 </html>
+
