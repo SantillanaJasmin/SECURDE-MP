@@ -5,7 +5,6 @@
             30
         </session-timeout>
     </session-config>
-
     <security-constraint>
         <display-name>Constraint1</display-name>
         <web-resource-collection>
