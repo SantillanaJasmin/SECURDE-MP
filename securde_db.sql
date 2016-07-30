@@ -123,7 +123,7 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
   `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` varchar(45) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `order_date` date NOT NULL,
   `bill_house_no` varchar(45) DEFAULT NULL,
   `bill_street` varchar(45) DEFAULT NULL,
@@ -217,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-26 21:08:25
+-- Dump completed on 2016-07-30 10:14:40
