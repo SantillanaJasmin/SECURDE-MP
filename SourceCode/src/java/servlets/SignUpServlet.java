@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import controller.PasswordHashing;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,9 +24,8 @@ import jdbc.DatabaseConnection;
 
 /**
  *
- * @author Hanna Sha
+ * @author Jasmin
  */
-@WebServlet(name = "SignUpServlet", urlPatterns = {"/SignUpServlet"})
 public class SignUpServlet extends HttpServlet {
 
     /**
@@ -40,20 +40,17 @@ public class SignUpServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignUpServlet</title>");            
+            out.println("<title>Servlet SignUpServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SignUpServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } finally {
-            out.close();
         }
     }
 
@@ -83,29 +80,33 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        
+//        processRequest(request, response);
+
         PrintWriter out = response.getWriter();
         DatabaseConnection dc = new DatabaseConnection();
+        PasswordHashing ph = new PasswordHashing();
         Connection conn = null;
         PreparedStatement ps = null;
-        
+
         String firstname = request.getParameter("firstname");
-        String middlename = request.getParameter("middlename");      
-        String lastname = request.getParameter("lastname");       
+        String middlename = request.getParameter("middlename");
+        String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String verifypassword = request.getParameter("verifypassword");
         int acctypeid = 4;
-        
+
+        password = ph.PasswordHashing(password);
+        System.out.println(password);
+
         try {
             // Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
-            
+
             // Open a connection
-            conn = dc.getConnection();  
-            
+            conn = dc.getConnection();
+
             // Execute SQL query
             String sql;
             sql = "INSERT INTO useraccount (user_name, password, account_type_id, first_name, middle_initial, last_name, email) VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -123,21 +124,20 @@ public class SignUpServlet extends HttpServlet {
             //Clean up environment
             conn.close();
             dc.closeConnection();
-            
+
             //TODO: Redirected to Main Page
-            
         } catch (SQLException se) {
             out.println("Stack Trace:<br/>");
-			se.printStackTrace(out);
-			out.println("<br/><br/>Stack Trace (for web display):</br>");
-			out.println(displayErrorForWeb(se));
+            se.printStackTrace(out);
+            out.println("<br/><br/>Stack Trace (for web display):</br>");
+            out.println(displayErrorForWeb(se));
         } catch (ClassNotFoundException ce) {
             out.println("Stack Trace:<br/>");
-			ce.printStackTrace(out);
-			out.println("<br/><br/>Stack Trace (for web display):</br>");
-			out.println(displayErrorForWeb(ce));
+            ce.printStackTrace(out);
+            out.println("<br/><br/>Stack Trace (for web display):</br>");
+            out.println(displayErrorForWeb(ce));
         }
-        
+
     }
 
     /**
@@ -151,10 +151,11 @@ public class SignUpServlet extends HttpServlet {
     }// </editor-fold>
 
     public String displayErrorForWeb(Throwable t) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		t.printStackTrace(pw);
-		String stackTrace = sw.toString();
-		return stackTrace.replace(System.getProperty("line.separator"), "<br/>\n");
-	}
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        t.printStackTrace(pw);
+        String stackTrace = sw.toString();
+        return stackTrace.replace(System.getProperty("line.separator"), "<br/>\n");
+    }
+
 }
