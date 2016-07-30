@@ -35,7 +35,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <!--<li><a><span class="glyphicon glyphicon-user"></span>My Account</a></li>-->
-                            <form class="navbar-form navbar-right" method="get" action="SignInServlet">
+                            <form class="navbar-form navbar-right" method="post" action="SignInServlet">
                                 <div class="form-group">
                                     <input type="text" placeholder="Username" name="username" class="form-control">
                                     <input type="password" placeholder="Password" name="password" class="form-control">
