@@ -60,7 +60,7 @@
         <br/><br/><br/>
         
         <div align="center">
-            <br><br><br>
+            <br><br>
             <p style="font-size: 30px; font-weight:bold;"> &nbsp Create your own Profile</p>
             <span style="color: red;">${message}</span><br><br>
             <div>
@@ -77,7 +77,7 @@
                     <input type="submit" class="btn btn-primary btn-lg" value="Sign Up"/> 
                 </form>
             </div>   
-            <br><br>
+            <br>
             <p>Already have an account? <a href="Login.jsp">Login here</a></p>
         </div>
             
