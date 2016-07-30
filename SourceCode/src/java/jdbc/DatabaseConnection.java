@@ -16,12 +16,13 @@ import java.util.Properties;
  */
 public class DatabaseConnection {
 
+    private Connection conn = null;
     private String userName = "root";
     private String password = "password";
-    private String dbms = "dbms";
+    private String dbms = "mysql";
     private String serverName = "localhost";
     private int portNumber = 3306;
-    private String dbName = "talaria_db";
+    private String dbName = "securde_db";
 
     /*
      public DatabaseConnection() {
@@ -35,7 +36,6 @@ public class DatabaseConnection {
      */
     public Connection getConnection() throws SQLException {
 
-        Connection conn = null;
         Properties connectionProps = new Properties();
         connectionProps.put("user", this.userName);
         connectionProps.put("password", this.password);
@@ -44,7 +44,8 @@ public class DatabaseConnection {
             conn = DriverManager.getConnection(
                     "jdbc:" + this.dbms + "://"
                     + this.serverName
-                    + ":" + this.portNumber + "/",
+                    + ":" + this.portNumber + "/"
+                    + this.dbName,
                     connectionProps);
         } else if (this.dbms.equals("derby")) {
             conn = DriverManager.getConnection(
@@ -55,5 +56,9 @@ public class DatabaseConnection {
         }
         System.out.println("Connected to database");
         return conn;
+    }
+
+    public void closeConnection() throws SQLException{
+        conn.close();
     }
 }
