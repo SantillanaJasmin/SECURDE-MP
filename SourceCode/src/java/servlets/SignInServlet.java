@@ -111,9 +111,9 @@ public class SignInServlet extends HttpServlet {
                 if(dbUsername.equals(username) && ph.checkPassword(password, dbPassword)){
                     out.println("PASOK<br/>");
                     
-                    break;
-                    //response.sendRedirect("MainPage.jsp");
+                    response.sendRedirect("catalog.jsp");
                     //then start session on that page
+                    break;
                 }else{
                     //prompt user w/ wrong username and password
                 }
