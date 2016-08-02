@@ -46,14 +46,15 @@
                     </div>
                 </div>
             </div>
-            <div class="cover-image" style="background-image: url(https://unsplash.imgix.net/photo-1418065460487-3e41a6c84dc5?q=25&amp;fm=jpg&amp;s=127f3a3ccf4356b7f79594e05f6c840e);"></div>
+            <div class="cover-image" style="background-image: url(images/clothingstore.jpg);"></div>
             <div class="container">
+                <br>
                 <div class="row">
                     <div class="col-md-6">
                         <img src="https://unsplash.imgix.net/photo-1422728221357-57980993ea99?w=1024&amp;q=50&amp;fm=jpg&amp;s=b4a34018d745e33048bcfc326cb9907b"
                              class="img-responsive img-thumbnail">
                     </div>
-                    <div class="col-md-6 text-left">
+                    <div class="col-md-6 text-left" id="jumbotron-text">
                         <h1>Register</h1>
                         <h3>Create an account for free!</h3>
                         <form method="post" action="SignUpServlet">
