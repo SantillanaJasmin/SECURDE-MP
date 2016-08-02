@@ -126,6 +126,7 @@ public class SignUpServlet extends HttpServlet {
             dc.closeConnection();
 
             //TODO: Redirected to Main Page
+           response.sendRedirect("catalog.jsp");
         } catch (SQLException se) {
             out.println("Stack Trace:<br/>");
             se.printStackTrace(out);
