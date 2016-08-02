@@ -93,7 +93,7 @@ body{
   height: 350px;
   background-image: url(../images/clothingstore.jpg);
   background-size: cover;
-  background-position: fixed;
+  background-attachment: fixed;
 }
 
 .catalog{
@@ -145,6 +145,7 @@ body{
   color: #ffffff;
   font-family: font1;
   text-align: center;
+  display: block;
 }
 
 .item-info .item-meta p{
@@ -160,10 +161,12 @@ body{
 }
 
 .item-info .view-item-button{
-  position: relative;
+  position: fixed;
 }
 
 .item-info .view-item-button span{
+  height: auto;
+  width: 10px;
   font-size: 16px;
   border: solid 1px #ffffff;
   padding: 8px;
