@@ -1089,8 +1089,8 @@ body {
   font-family: Lato;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #ffffff;
-  background-color: #272b30;
+  color: #000000;
+  /*background-color: #272b30;*/
 }
 input,
 button,
@@ -1101,7 +1101,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #ff851b;
+  color: #ffffff;
   text-decoration: none;
 }
 a:hover,
@@ -4884,6 +4884,11 @@ a.badge:focus {
     font-size: 63px;
   }
 }
+
+#jumbotron-text {
+    color: #ffffff;
+}
+
 .thumbnail {
   display: block;
   padding: 4px;
