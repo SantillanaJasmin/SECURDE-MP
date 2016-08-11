@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Joy
@@ -14,7 +16,7 @@ public class Product {
     private String productCategory;
     private String productName;
     private String productDescription;
-    private double productPrice;
+    private BigDecimal productPrice;
 
     /**
      * @return the productId
@@ -75,15 +77,15 @@ public class Product {
     /**
      * @return the productPrice
      */
-    public double getProductPrice() {
+    public BigDecimal getProductPrice() {
         return productPrice;
     }
 
     /**
      * @param productPrice the productPrice to set
      */
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
-    
+
 }

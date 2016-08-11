@@ -12,6 +12,7 @@ package model;
 public class Review {
     private int reviewId;
     private String username;
+    private int productId;
     private int reviewRate;
     private String content;
 
@@ -69,6 +70,20 @@ public class Review {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    /**
+     * @return the productId
+     */
+    public int getProductId() {
+        return productId;
+    }
+
+    /**
+     * @param productId the productId to set
+     */
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
     
 }

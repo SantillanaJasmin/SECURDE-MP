@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Joy
@@ -13,7 +15,7 @@ public class TransactionItem {
     private int transactionId;
     private int productId;
     private int quantity;
-    private double subtotal;
+    private BigDecimal subtotal;
 
     /**
      * @return the transactionId
@@ -60,15 +62,15 @@ public class TransactionItem {
     /**
      * @return the subtotal
      */
-    public double getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotal;
     }
 
     /**
      * @param subtotal the subtotal to set
      */
-    public void setSubtotal(double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
-    
+
 }

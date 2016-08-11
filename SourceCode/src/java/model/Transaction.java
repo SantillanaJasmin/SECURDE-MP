@@ -5,7 +5,9 @@
  */
 package model;
 
+import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,9 +19,18 @@ public class Transaction {
     private Date orderDate;
     private Address billAddress;
     private Address shipAddress;
-    private int orderStatus;
+    private OrderStatus orderStatus;
     private String creditCardNo;
-    private double totalPrice;
+    private BigDecimal totalPrice;
+    private ArrayList<TransactionItem> transactionItems;
+    
+    /* not sure if this actually works */
+    public boolean isBillShipEqual() {
+        if(billAddress.equals(shipAddress))
+            return true;
+        else
+            return false;
+    }
 
     /**
      * @return the transactionId
@@ -92,20 +103,6 @@ public class Transaction {
     }
 
     /**
-     * @return the orderStatus
-     */
-    public int getOrderStatus() {
-        return orderStatus;
-    }
-
-    /**
-     * @param orderStatus the orderStatus to set
-     */
-    public void setOrderStatus(int orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    /**
      * @return the creditCardNo
      */
     public String getCreditCardNo() {
@@ -122,16 +119,43 @@ public class Transaction {
     /**
      * @return the totalPrice
      */
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
     /**
      * @param totalPrice the totalPrice to set
      */
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
-    
-    
+
+    /**
+     * @return the transactionItems
+     */
+    public ArrayList<TransactionItem> getTransactionItems() {
+        return transactionItems;
+    }
+
+    /**
+     * @param transactionItems the transactionItems to set
+     */
+    public void setTransactionItems(ArrayList<TransactionItem> transactionItems) {
+        this.transactionItems = transactionItems;
+    }
+
+    /**
+     * @return the orderStatus
+     */
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    /**
+     * @param orderStatus the orderStatus to set
+     */
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
 }
