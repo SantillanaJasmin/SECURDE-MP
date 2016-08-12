@@ -1,0 +1,29 @@
+@font-face {
+    font-family: font1;
+    src: url(../fonts/light.otf);
+}
+body{
+  font-family: font1;
+}
+.wrapper{
+  padding-top: 100px;
+  height: 100%;
+}
+.remove{
+  color: #ddc9a3;
+}
+.remove:hover{
+  cursor: pointer;
+  font-style: italic;
+}
+
+button{
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+button:hover{
+  background-color: #e8d9bc;
+  color: #fff;
+  border: none;
+  border: solid 1px #fff;
+}
