@@ -111,3 +111,11 @@ body{
   background-size: cover;
   border: 3px solid #e8d9bc;
 }
+
+.edit{
+  color: #ddc9a3;
+}
+.edit:hover{
+  cursor: pointer;
+  font-style: italic;
+}
