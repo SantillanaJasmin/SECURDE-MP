@@ -16,7 +16,6 @@
 
         <!--http://www.the-art-of-web.com/javascript/validate-password/#box1-->
         <script type="text/javascript">
-
             function checkForm(form)
             {
                 if (form.username.value === "") {
@@ -37,7 +36,7 @@
                         form.password.focus();
                         return false;
                     }
-                    if (form.password.value == form.username.value) {
+                    if (form.password.value === form.username.value) {
                         alert("Error: Password must be different from Username!");
                         form.password.focus();
                         return false;
@@ -61,15 +60,13 @@
                         return false;
                     }
                 } else {
-                    alert("Error: Please check that you've entered and confirmed your password!");
+                    alert("Passwords do not match.");
                     form.password.focus();
                     return false;
                 }
-
                 alert("Your account has been created");
                 return true;
             }
-
         </script>
     </head>
 
