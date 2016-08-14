@@ -6,6 +6,7 @@
 package servlets;
 
 import controller.PasswordHashing;
+import controller.UserController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -81,13 +82,6 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-
-        PrintWriter out = response.getWriter();
-        DatabaseConnection dc = new DatabaseConnection();
-        PasswordHashing ph = new PasswordHashing();
-        Connection conn = null;
-        PreparedStatement ps = null;
-
         String firstname = request.getParameter("firstname");
         String middlename = request.getParameter("middlename");
         String lastname = request.getParameter("lastname");
@@ -97,48 +91,17 @@ public class SignUpServlet extends HttpServlet {
         String verifypassword = request.getParameter("verifypassword");
         int acctypeid = 4;
 
-        password = ph.PasswordHashing(password);
-        System.out.println(password);
-
-        try {
-            // Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-
-            // Open a connection
-            conn = dc.getConnection();
-
-            // Execute SQL query
-            String sql;
-            sql = "INSERT INTO useraccount (user_name, password, account_type_id, first_name, middle_initial, last_name, email, attempts, active) VALUES(?, ?, ?, ?, ?, ?, ?, 0, 1)";
-            ps = conn.prepareStatement(sql);
-
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ps.setInt(3, acctypeid);
-            ps.setString(4, firstname);
-            ps.setString(5, middlename);
-            ps.setString(6, lastname);
-            ps.setString(7, email);
-            ps.executeUpdate();
-
-            //Clean up environment
-            conn.close();
-            dc.closeConnection();
-
-            //TODO: Redirected to Main Page
-           response.sendRedirect("catalog.jsp");
-        } catch (SQLException se) {
-            out.println("Stack Trace:<br/>");
-            se.printStackTrace(out);
-            out.println("<br/><br/>Stack Trace (for web display):</br>");
-            out.println(displayErrorForWeb(se));
-        } catch (ClassNotFoundException ce) {
-            out.println("Stack Trace:<br/>");
-            ce.printStackTrace(out);
-            out.println("<br/><br/>Stack Trace (for web display):</br>");
-            out.println(displayErrorForWeb(ce));
+        UserController uc = new UserController();
+        boolean isSignUp = uc.signUp(firstname, middlename, lastname, username, password, email, acctypeid);
+        
+        if(!isSignUp) {
+            System.out.println("Hindi Pasok");
+            response.sendRedirect("index.jsp");
+        } else {
+            //alert for incorrect username of password;
+            System.out.println("Pasok");
+            response.sendRedirect("catalog.jsp");
         }
-
     }
 
     /**
