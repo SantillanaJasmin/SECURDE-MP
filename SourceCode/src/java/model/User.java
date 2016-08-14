@@ -16,7 +16,13 @@ public class User {
     private int accountType;
     private Name name;
     private String email;
+    private int attempts;
 
+    public User() {
+        this.username = "not initialized";
+        this.password = "not initialized";
+    }
+    
     /**
      * @return the userId
      */
@@ -99,6 +105,20 @@ public class User {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the attempts
+     */
+    public int getAttempts() {
+        return attempts;
+    }
+
+    /**
+     * @param attempts the attempts to set
+     */
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
     }
     
     
