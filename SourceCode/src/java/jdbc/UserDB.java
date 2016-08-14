@@ -19,23 +19,29 @@ import model.User;
  * @author Joy
  */
 public class UserDB {
-    public User signIn(String username) {
-        User user = new User();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        
+    private User user;
+    private DatabaseConnection dbc;
+    private Connection conn;
+    private PreparedStatement stmt;
+    
+    public UserDB() {
+        user = new User();
+        dbc = new DatabaseConnection();
+        conn = null;
+        stmt = null;
+    }
+    
+    public User signIn(String username) {  
         try {
-            DatabaseConnection dbc = new DatabaseConnection();
-            conn = dbc.getConnection();
+            conn = (Connection) dbc.getConnection();
             String sql = "SELECT * FROM useraccount "
                     + " WHERE user_name = ? AND active = 1";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             
-            ResultSet result = null;
-            result = stmt.executeQuery();
+            ResultSet result = stmt.executeQuery();
             
-            if(result != null) {
+            if(result.next()) {
                 user.setUserId(result.getInt("user_id"));
                 user.setAttempts(result.getInt("attempts"));
                 user.setUsername(result.getString("user_name"));
