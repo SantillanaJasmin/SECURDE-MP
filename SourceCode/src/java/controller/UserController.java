@@ -13,9 +13,13 @@ import model.User;
  * @author Joy
  */
 public class UserController {
+    private boolean valid = false;
+    
+    public UserController() {
+        
+    }
     
     public boolean signIn(String username, String password) {
-        boolean valid = false;
         UserDB userDB = new UserDB();
         User user = userDB.signIn(username);
         PasswordHashing ph = new PasswordHashing();
