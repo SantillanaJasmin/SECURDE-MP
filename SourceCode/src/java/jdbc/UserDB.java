@@ -23,6 +23,7 @@ public class UserDB {
     private DatabaseConnection dbc;
     private Connection conn;
     private PreparedStatement stmt;
+    private boolean added = false;
     
     public UserDB() {
         user = new User();
@@ -130,14 +131,14 @@ public class UserDB {
     }
     
     public boolean addUser(User user) {
-        boolean added = false;
         Connection conn = null;
         PreparedStatement stmt = null;
         int result = 0;
         
         try {
             DatabaseConnection dbc = new DatabaseConnection();
-            conn = dbc.getConnection();
+            conn = (Connection) dbc.getConnection();
+            
             String sql = "INSERT INTO useraccount "
                     + "(user_name, password, account_type_id, first_name,"
                     + " middle_initial, last_name, email, attempts, active) "
