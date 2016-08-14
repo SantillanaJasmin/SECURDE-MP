@@ -20,7 +20,7 @@ public class User {
 
     public User(String firstName, String middleInitial, String lastName, 
             String username, String password, String email, int accountType) {
-        Name name = new Name(firstName, middleInitial, lastName);
+        name = new Name(firstName, middleInitial, lastName);
         this.username = username;
         this.password = password;
         this.email = email;
