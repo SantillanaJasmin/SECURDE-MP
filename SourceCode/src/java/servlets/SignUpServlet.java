@@ -109,7 +109,7 @@ public class SignUpServlet extends HttpServlet {
 
             // Execute SQL query
             String sql;
-            sql = "INSERT INTO useraccount (user_name, password, account_type_id, first_name, middle_initial, last_name, email) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO useraccount (user_name, password, account_type_id, first_name, middle_initial, last_name, email, attempts, active) VALUES(?, ?, ?, ?, ?, ?, ?, 0, 1)";
             ps = conn.prepareStatement(sql);
 
             ps.setString(1, username);
