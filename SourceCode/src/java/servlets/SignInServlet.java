@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlets;
 
 import controller.PasswordHashing;
+import controller.UserController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -46,7 +46,7 @@ public class SignInServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignInServlet</title>");            
+            out.println("<title>Servlet SignInServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SignInServlet at " + request.getContextPath() + "</h1>");
@@ -82,57 +82,18 @@ public class SignInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        PrintWriter out = response.getWriter();
-        PasswordHashing ph = new PasswordHashing();
-        DatabaseConnection dc = new DatabaseConnection();
-        Connection conn = null;
-        Statement s = null;
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         
-        try {
-            
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            
-            // Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-            
-            // Open a connection
-            conn = dc.getConnection();  
-            s = (Statement) conn.createStatement();
-            
-            //Get ResultSet
-            ResultSet r;
-            r = s.executeQuery("SELECT user_name, password FROM useraccount");
-            
-            while(r.next()){
-                String dbUsername = r.getString("user_name");
-                String dbPassword = r.getString("password");
-
-                if(dbUsername.equals(username) && ph.checkPassword(password, dbPassword)){
-                    out.println("PASOK<br/>");
-                    
-                    response.sendRedirect("catalog.jsp");
-                    //then start session on that page
-                    break;
-                }else{
-                    //prompt user w/ wrong username and password
-                }
-            }
-
-            //Clean up environment
-            conn.close();
-            dc.closeConnection();
-            
-        } catch (SQLException se) {
-            out.println("Stack Trace:<br/>");
-			se.printStackTrace(out);
-			out.println("<br/><br/>Stack Trace (for web display):</br>");
-			out.println(displayErrorForWeb(se));
-        } catch (ClassNotFoundException ce) {
-            out.println("Stack Trace:<br/>");
-			ce.printStackTrace(out);
-			out.println("<br/><br/>Stack Trace (for web display):</br>");
-			out.println(displayErrorForWeb(ce));
+        UserController uc = new UserController();
+        boolean isSignIn = uc.signIn(username, password);
+        
+        if(!isSignIn) {
+            System.out.println("Pasok");
+            response.sendRedirect("catalog.jsp");
+        } else {
+            //alert for incorrect username of password;
+            System.out.println("Hindi Pasok");
         }
     }
 
@@ -147,10 +108,10 @@ public class SignInServlet extends HttpServlet {
     }// </editor-fold>
 
     public String displayErrorForWeb(Throwable t) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		t.printStackTrace(pw);
-		String stackTrace = sw.toString();
-		return stackTrace.replace(System.getProperty("line.separator"), "<br/>\n");
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        t.printStackTrace(pw);
+        String stackTrace = sw.toString();
+        return stackTrace.replace(System.getProperty("line.separator"), "<br/>\n");
     }
 }
