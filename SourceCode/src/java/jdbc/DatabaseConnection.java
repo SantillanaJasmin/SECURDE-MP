@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,12 +43,18 @@ public class DatabaseConnection {
         connectionProps.put("password", this.password);
 
         if (this.dbms.equals("mysql")) {
-            conn = DriverManager.getConnection(
-                    "jdbc:" + this.dbms + "://"
-                    + this.serverName
-                    + ":" + this.portNumber + "/"
-                    + this.dbName,
-                    connectionProps);
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                
+                conn = DriverManager.getConnection(
+                        "jdbc:" + this.dbms + "://"
+                                + this.serverName
+                                + ":" + this.portNumber + "/"
+                                + this.dbName,
+                        connectionProps);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (this.dbms.equals("derby")) {
             conn = DriverManager.getConnection(
                     "jdbc:" + this.dbms + ":"
