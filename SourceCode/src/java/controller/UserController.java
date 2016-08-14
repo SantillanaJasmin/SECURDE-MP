@@ -19,7 +19,7 @@ public class UserController {
         UserDB userDB = new UserDB();
         User user = userDB.signIn(username);
         PasswordHashing ph = new PasswordHashing();
-        if(user.getUsername().contentEquals(username)) {
+        if(user.getUsername().equals(username)) {
             if(ph.checkPassword(password, user.getPassword())) {
                 valid = true;
             } else { /* password is not correct */
