@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: localhost    Database: talaria_db
+-- Host: localhost    Database: securde_db
 -- ------------------------------------------------------
--- Server version	5.7.11-log
+-- Server version	5.7.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,6 +37,30 @@ LOCK TABLES `accounttype` WRITE;
 /*!40000 ALTER TABLE `accounttype` DISABLE KEYS */;
 INSERT INTO `accounttype` VALUES (1,'Administrator'),(2,'Acounting Manager'),(3,'Product Manager'),(4,'Customer');
 /*!40000 ALTER TABLE `accounttype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -77,7 +101,7 @@ CREATE TABLE `product` (
   `product_desc` varchar(300) NOT NULL,
   `product_price` float NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,6 +110,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'2','Yeezy Boost','Get that casual or sporty look. Thank you Kanye.',25),(2,'1','Doc Marten\'s','Classic 1460\'s. Trendy yet comfortable.',50),(3,'4','Muji Slippers','Feel like you\'re stepping on clouds.',30),(4,'3','Birkenstock Sandals',' For when your toes want to see the sun. ',20);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,6 +124,7 @@ DROP TABLE IF EXISTS `review`;
 CREATE TABLE `review` (
   `review_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `review_rate` int(11) DEFAULT NULL,
   `content` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`review_id`)
@@ -164,9 +190,8 @@ DROP TABLE IF EXISTS `transactionitems`;
 CREATE TABLE `transactionitems` (
   `transaction_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `product_price` float NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `product_quantity` int(11) NOT NULL
+  `product_quantity` int(11) NOT NULL,
+  `sub_total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -196,7 +221,7 @@ CREATE TABLE `useraccount` (
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +230,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES (1,'SantillanaJasmin','$2a$12$NP0OZfRpJlcXaNItVcD07OiAqsVjvUymvVhzyyecybGRftHotG4Wm',4,'Jasmin','','Santillana','jas@yahoo.com');
+INSERT INTO `useraccount` VALUES (1,'SantillanaJasmin','$2a$12$NP0OZfRpJlcXaNItVcD07OiAqsVjvUymvVhzyyecybGRftHotG4Wm',4,'Jasmin','','Santillana','jas@yahoo.com'),(2,'hanna168','$2a$12$N.HC9u4p3slaqDm3HAzm8OD/C9JKDwNAlOnuqormVAVWPuj6x4rHO',4,'Hanna','H','Sha','hannastefaniesha@gmail.com');
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -218,4 +243,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-31  1:13:43
+-- Dump completed on 2016-08-14 13:54:23
