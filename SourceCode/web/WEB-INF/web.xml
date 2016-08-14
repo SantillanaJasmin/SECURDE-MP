@@ -32,9 +32,8 @@
         <url-pattern>/SignInServlet</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
     </session-config>
     <security-constraint>
         <display-name>Constraint1</display-name>
