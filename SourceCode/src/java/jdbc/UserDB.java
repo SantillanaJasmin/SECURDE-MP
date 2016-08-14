@@ -129,5 +129,51 @@ public class UserDB {
         return updated;
     }
     
-    
+    public boolean addUser(User user) {
+        boolean added = false;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int result = 0;
+        
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            conn = dbc.getConnection();
+            String sql = "INSERT INTO useraccount "
+                    + "(user_name, password, account_type_id, first_name,"
+                    + " middle_initial, last_name, email, attempts, active) "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, 0, 1)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setInt(3, user.getAccountType());
+            Name name = user.getName();
+            stmt.setString(4, name.getFirstName());
+            stmt.setString(5, name.getMiddleInitial());
+            stmt.setString(6, name.getLastName());
+            stmt.setString(7, user.getEmail());
+            
+            result = stmt.executeUpdate();
+            if(result == 1) {
+                added = true;
+            } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se) {
+            }
+            try {
+                if(conn != null) {
+                    conn.close();
+                }
+            } catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return added;
+    }
 }

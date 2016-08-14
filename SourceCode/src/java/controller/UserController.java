@@ -34,4 +34,14 @@ public class UserController {
         
         return valid;
     }
+    /* compile details of the user in the servlet */
+    public boolean signUp(String firstName, String middleInitial, String lastName, 
+            String username, String password, String email, int accountType) {
+        UserDB userDB = new UserDB();
+        PasswordHashing ph = new PasswordHashing();
+        password = ph.PasswordHashing(password);
+        User user = new User(firstName, middleInitial, lastName, 
+                username, password, email, accountType);
+        return userDB.addUser(user);
+    }
 }

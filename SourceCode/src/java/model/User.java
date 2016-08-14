@@ -18,6 +18,15 @@ public class User {
     private String email;
     private int attempts;
 
+    public User(String firstName, String middleInitial, String lastName, 
+            String username, String password, String email, int accountType) {
+        Name name = new Name(firstName, middleInitial, lastName);
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.accountType = accountType;
+    }
+    
     public User() {
         this.username = "not initialized";
         this.password = "not initialized";

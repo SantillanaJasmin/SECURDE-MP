@@ -14,6 +14,14 @@ public class Name {
     private String middleInitial;
     private String lastName;
 
+    public Name(){}
+    
+    public Name(String firstName, String middleInitial, String lastName) {
+        this.firstName = firstName;
+        this.middleInitial = middleInitial;
+        this.lastName = lastName;
+    }
+    
     /**
      * @return the firstName
      */
