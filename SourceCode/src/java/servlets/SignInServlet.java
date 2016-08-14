@@ -89,11 +89,11 @@ public class SignInServlet extends HttpServlet {
         boolean isSignIn = uc.signIn(username, password);
         
         if(!isSignIn) {
-            System.out.println("Pasok");
-            response.sendRedirect("catalog.jsp");
+            System.out.println("Hindi Pasok");
         } else {
             //alert for incorrect username of password;
-            System.out.println("Hindi Pasok");
+            System.out.println("Pasok");
+            response.sendRedirect("catalog.jsp");
         }
     }
 
