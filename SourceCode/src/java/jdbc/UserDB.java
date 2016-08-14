@@ -28,7 +28,7 @@ public class UserDB {
             DatabaseConnection dbc = new DatabaseConnection();
             conn = dbc.getConnection();
             String sql = "SELECT * FROM useraccount "
-                    + " WHERE username = ? AND active = 1";
+                    + " WHERE user_name = ? AND active = 1";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             
@@ -38,7 +38,7 @@ public class UserDB {
             if(result != null) {
                 user.setUserId(result.getInt("user_id"));
                 user.setAttempts(result.getInt("attempts"));
-                user.setUsername(result.getString("username"));
+                user.setUsername(result.getString("user_name"));
                 user.setPassword(result.getString("password"));
                 user.setAccountType(result.getInt("account_type_id"));
                 user.setEmail(result.getString("email"));
