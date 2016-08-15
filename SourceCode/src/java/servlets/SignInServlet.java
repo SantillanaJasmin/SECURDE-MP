@@ -14,7 +14,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,8 +22,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jdbc.DatabaseConnection;
-import jdbc.ProductDB;
-import model.Product;
 
 /**
  *
@@ -96,11 +93,7 @@ public class SignInServlet extends HttpServlet {
         } else {
             //alert for incorrect username of password;
             System.out.println("Pasok");
-            ProductDB pdb = new ProductDB();
-            List<Product> productList = pdb.getProducts(); 
-            request.setAttribute("productList", productList);
-            request.getRequestDispatcher("catalog.jsp").forward(request,response);
-            //response.sendRedirect("catalog.jsp");
+            response.sendRedirect("catalog.jsp");
         }
     }
 

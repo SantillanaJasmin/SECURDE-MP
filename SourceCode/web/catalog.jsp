@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,19 +37,13 @@
         </div>
         <div class="wrapper">
             <div class="row">
-            <% int ctr = 0;%>
-            <c:forEach var="product" items="${productList}" varStatus="loop">
-                <% if (ctr == 3){ %>
-                </div>
-                <div class="row">
-                    <% ctr = 0;}%>
                 <div class="four columns" style="background-image:url(images/sandals.png)">
                     <div class="item-info">
                         <a class="item-meta">
                             <p>
-                                <span class="item-name">${product.productName}</span>
+                                <span class="item-name">Sandals</span>
                                 <br />
-                                <span class="item-price">$${product.productPrice}</span>
+                                <span class="item-price">$15.00</span>
                             </p>
                             <div class="view-item-button">
                                 <span>View</span>
@@ -58,9 +51,124 @@
                         </a>
                     </div>
                 </div>
-                <% ctr++; %>
-                </c:forEach>
+                <div class="four columns" style="background-image:url(images/shoes.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Shoes</span>
+                                <br />
+                                <span class="item-price">$25.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
+                <div class="four columns" style="background-image:url(images/boots.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Boots</span>
+                                <br />
+                                <span class="item-price">$50.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="four columns" style="background-image:url(images/boots.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Boots</span>
+                                <br />
+                                <span class="item-price">$50.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="four columns" style="background-image:url(images/sandals.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Sandals</span>
+                                <br />
+                                <span class="item-price">$15.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="four columns" style="background-image:url(images/shoes.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Shoes</span>
+                                <br />
+                                <span class="item-price">$25.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="four columns" style="background-image:url(images/shoes.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Shoes</span>
+                                <br />
+                                <span class="item-price">$25.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="four columns" style="background-image:url(images/boots.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Boots</span>
+                                <br />
+                                <span class="item-price">$50.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="four columns" style="background-image:url(images/sandals.png)">
+                    <div class="item-info">
+                        <a class="item-meta">
+                            <p>
+                                <span class="item-name">Sandals</span>
+                                <br />
+                                <span class="item-price">$15.00</span>
+                            </p>
+                            <div class="view-item-button">
+                                <span>View</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
