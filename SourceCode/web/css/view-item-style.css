@@ -1,0 +1,74 @@
+@font-face {
+    font-family: font1;
+    src: url(../fonts/light.otf);
+}
+.wrapper{
+  padding-top: 90px;
+}
+body{
+  font-family: font1;
+  cursor: default;
+}
+#item-description{
+  height: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  display: block;
+  background-color: #f9f6ee;
+}
+
+#item-description .item-image{
+  background-size: cover;
+  height: 500px;
+}
+
+#purchase-info .item-name{
+  font-size: 42px;
+  font-weight: bold;
+}
+.review-box h3{
+  font-weight: bold;
+}
+
+.review-box div{
+  border-bottom: dashed 1px #ddc9a3;
+}
+
+.review-box .reviewer{
+  margin-top: 20px;
+}
+.review-box .reviewer span{
+  font-weight: bold;
+}
+
+#purchase-info input:focus{
+  border: solid 1px #ddc9a3;
+  outline: none;
+}
+
+#purchase-info button{
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+#purchase-info button:hover{
+  background-color: #e8d9bc;
+  color: #fff;
+  border: none;
+  border: solid 1px #fff;
+}
+/*
+.order-quantity > * {
+  display: inline-block;
+  height: 50px;
+  background-color: red;
+}
+
+.order-quantity div{
+  width: 50px;
+  height: 50px;
+}
+
+.order-quantity .button-minus{
+
+}*/
