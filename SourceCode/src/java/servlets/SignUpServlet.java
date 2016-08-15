@@ -13,6 +13,7 @@ import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -22,6 +23,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jdbc.DatabaseConnection;
+import jdbc.ProductDB;
+import model.Product;
 
 /**
  *
@@ -100,7 +103,11 @@ public class SignUpServlet extends HttpServlet {
         } else {
             //alert for incorrect username of password;
             System.out.println("Pasok");
-            response.sendRedirect("catalog.jsp");
+            ProductDB pdb = new ProductDB();
+            List<Product> productList = pdb.getProducts(); 
+            request.setAttribute("productList", productList);
+            request.getRequestDispatcher("catalog.jsp").forward(request,response);
+            //response.sendRedirect("catalog.jsp");
         }
     }
 
