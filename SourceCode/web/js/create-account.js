@@ -6,14 +6,13 @@ function checkSubmit() {
 }
 $(document).ready(function(){
   $('#nav-bar').addClass("sticky");
-
-  $("#confirm-password-overlay").hide();
-  $("#confirm-password-box").hide();
+    $("#confirm-password-overlay").hide();
+  	$("#confirm-password-box").hide();
     $("#confirm-password-overlay").click(function(event){
       $("#confirm-password-overlay").fadeOut(500);
       $("#confirm-password-box").fadeOut(500);
      });
-    $("#saveChanges").click(function(event){
+    $("#createAccountButton").click(function(event){
       $("#confirm-password-overlay").show();
       $("#confirm-password-box").show();
     });

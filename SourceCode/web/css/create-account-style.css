@@ -1,0 +1,8 @@
+#createAccountButton{
+  text-transform: none;
+}
+
+.wrapper select:focus{
+  border: solid 1px #ddc9a3;
+  outline: none;
+}
