@@ -25,6 +25,7 @@
             <div id="links">
                 <ul>
                     <li><a href="product-list.html">Product List</a></li>
+                    <li><a href="add-product.html">Add Product</a></li>
                 </ul>
             </div>
             <div id="account">

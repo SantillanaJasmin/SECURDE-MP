@@ -22,8 +22,8 @@
             </div>
             <div id="links">
                 <ul>
-                    <li><a href="add-product.html">Add Product</a></li>
                     <li><a href="product-list.html">Product List</a></li>
+                    <li><a href="add-product.html">Add Product</a></li>
                 </ul>
             </div>
             <div id="account">
@@ -53,7 +53,7 @@
                             <td>50.00</td>
                             <td><div class="img-prev" style="background-image:url(images/boots.png)"></div></td>
                             <td>
-                                <span class="edit">Edit</span>
+                                <span class="edit"><a href ="edit-product.html">Edit</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -62,7 +62,7 @@
                             <td>25.00</td>
                             <td><div class="img-prev" style="background-image:url(images/shoes.png)"></div></td>
                             <td>
-                                <span class="edit">Edit</span>
+                                <span class="edit"><a href ="edit-product.html">Edit</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -71,7 +71,7 @@
                             <td>30.00</td>
                             <td><div class="img-prev" style="background-image:url(images/slippers.png)"></div></td>
                             <td>
-                                <span class="edit">Edit</span>
+                                <span class="edit"><a href ="edit-product.html">Edit</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +80,7 @@
                             <td>20.00</td>
                             <td><div class="img-prev" style="background-image:url(images/sandals.png)"></div></td>
                             <td>
-                                <span class="edit">Edit</span>
+                                <span class="edit"><a href ="edit-product.html">Edit</a></span>
                             </td>
                         </tr>
                     </tbody>
