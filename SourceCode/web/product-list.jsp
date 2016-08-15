@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : product-list
     Created on : Aug 14, 2016, 4:17:02 AM
     Author     : Jasmin
@@ -22,6 +22,7 @@
             </div>
             <div id="links">
                 <ul>
+                    <li><a href="add-product.html">Add Product</a></li>
                     <li><a href="product-list.html">Product List</a></li>
                 </ul>
             </div>
