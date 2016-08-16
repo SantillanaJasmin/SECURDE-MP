@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Item Name</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/cart-style.css" />
+
+        <link rel="stylesheet" href="css/edit-product-style.css" />
+        <link rel="stylesheet" href="css/checkout-style.css" />
+        <link rel="stylesheet" href="css/create-account-style.css" />
+    </head>
+    <body>
+        <div id="confirm-password-overlay"></div>
+        <div id="confirm-password-box">
+            <h4>Confirm password to continue</h4>
+            <input placeholder="Password" name = "userPassword" id="adminPassword" name="adminPassword" type="password" id="adminPassword"/>
+            <button type="submit" name="action" id = "authPassConfirm">Confirm</button>
+        </div>
+        <!-- START NAV-->
+        <div id="nav-bar">
+            <div id="talaria-logo">
+                TALARIA
+            </div>
+            <div id="links">
+                <ul>
+                    <li><a href="account-list.html">Account List</a></li>
+                    <li><a href="create-account.html">Create Account</a></li>
+                </ul>
+            </div>
+            <div id="account">
+                <ul>
+                    <li><a href="/">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- END NAV-->
+        <div class="wrapper" style="display: block">
+            <form>
+                <h1>Create Account</h1>
+                <div class="row">
+                    <div class="five columns">
+                        <label for="firstName">First Name</label>
+                        <input class="u-full-width" type="text" placeholder="First Name" id="firstName">
+                    </div>
+                    <div class="two columns">
+                        <label for="middleInitial">Middle Initial</label>
+                        <input class="u-full-width" type="text" placeholder="Middle Initial" id="middleInitial">
+                    </div>
+                    <div class="five columns">
+                        <label for="lasttName">Last Name</label>
+                        <input class="u-full-width" type="text" placeholder="Last Name" id="lastName">
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="six columns">
+                    <label for="email">Email Address</label>
+                    <input class="u-full-width" type="email" placeholder="Email Address" id="email">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="six columns">
+                    <label for="username">Username</label>
+                    <input class="u-full-width" type="text" placeholder="Username" id="username">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="six columns">
+                    <label for="temporaryPassword1">Temporary Password</label>
+                    <input class="u-full-width" type="password" placeholder="Password" id="temporaryPassword1">
+                  </div>
+                  <div class="six columns">
+                    <label for="temporaryPassword2">Confirm Temporary Password</label>
+                    <input class="u-full-width" type="password" placeholder="Confirm Password" id="temporaryPassword2">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="five columns">
+                    <label for="accountTypet">Account Type</label>
+                    <select class="u-full-width" id="accountType">
+                      <option value="ProductManager">Product Manager</option>
+                      <option value="AccountingManager">Accounting Manager</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="reset" style="float:left" id="createAccountButton">Create Account</button>
+            </form>
+
+        </div>
+        <div class="footer">
+
+        </div>
+        <script src="js/jquery.js"></script>
+        <script src="js/create-account.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#nav-bar').addClass("sticky");
+            });
+            $(window).scroll(function() {
+                $('#nav-bar').addClass("sticky");
+            });
+            $(".remove").on('click', function(event) {
+                $(this).parent().parent().remove();
+            });
+            $("#backToCart").on('click', function(event) {
+                window.location.href = 'cart.html'
+            });
+        </script>
+    </body>
+</html>
