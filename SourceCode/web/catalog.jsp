@@ -38,29 +38,35 @@
         </div>
         <div class="wrapper">
             <div class="row">
-            <% int ctr = 0;%>
-            <c:forEach var="product" items="${productList}" varStatus="loop">
-                <% if (ctr == 3){ %>
+                <% int ctr = 0;%>
+                <c:forEach var="product" items="${productList}" varStatus="loop">
+                    <% if (ctr == 3) { %>
                 </div>
                 <div class="row">
-                    <% ctr = 0;}%>
-                <div class="four columns" style="background-image:url(images/sandals.png)">
-                    <div class="item-info">
-                        <a class="item-meta">
-                            <p>
-                                <span class="item-name">${product.productName}</span>
-                                <br />
-                                <span class="item-price">$${product.productPrice}</span>
-                            </p>
-                            <div class="view-item-button">
-                                <span>View</span>
-                            </div>
-                        </a>
+                    <% ctr = 0;
+                        }%>
+                    <div class="four columns" style="background-image:url(images/sandals.png)">
+                        <div class="item-info">
+                            <form action="view-item.jsp" method="POST">
+                                <a class="item-meta">
+                                <p>
+                                    <span class="item-name">${product.productName}</span>
+                                    <input type="hidden" name="itemName" value="${product.productName}">
+                                    <br />
+                                    <span class="item-price">$${product.productPrice}</span>
+                                    <input type="hidden" name="itemPrice" value="${product.productPrice}">
+                                </p>
+<!--                                <div class="view-item-button">
+                                    <span>View</span>
+                                </div>-->
+                                <input type="submit" value="View" style="color: white;">
+                                </a>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <% ctr++; %>
+                    <% ctr++; %>
                 </c:forEach>
-                </div>
+            </div>
         </div>
 
         <div class="footer">
