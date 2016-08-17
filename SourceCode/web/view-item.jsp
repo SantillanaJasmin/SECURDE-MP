@@ -1,9 +1,13 @@
+<%@page import="java.math.BigDecimal"%>
+<%@page import="java.lang.String"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Item Name</title>
+        <title>View Item</title>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/style.css">
@@ -36,8 +40,17 @@
                     <div class="item-image" style="background-image: url(images/boots.png)"></div>
                 </div>
                 <div class="six columns" id="purchase-info">
-                    <h3 class="item-name">Shoe</h3>
-                    <h4 class="item-price">$10.00</h4>
+                    <jsp:declaration>
+                        String name = "";
+                        String price= "";
+                    </jsp:declaration>
+                    
+                    <jsp:scriptlet>
+                        name = request.getParameter("itemName");
+                        price = request.getParameter("itemPrice");
+                    </jsp:scriptlet>
+                    <h3 class="item-name"><jsp:expression>name</jsp:expression></h3>
+                    <h4 class="item-price">$<jsp:expression>price</jsp:expression></h4>
                     <!-- <div class="order-quantity">
                       <div class="button-minus">-</div>
                       <input type="number" name="quantity" value="0">
