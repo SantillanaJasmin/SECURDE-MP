@@ -40,6 +40,7 @@
                     <thead>
                         <tr>
                             <th>Item Name</th>
+                            <th>Type</th>
                             <th>Description</th>
                             <th>Price ($)</th>
                             <th>Image</th>
@@ -49,6 +50,7 @@
                     <tbody>
                         <tr>
                             <td>Doc Marten's</td>
+                            <td>Boots</td>
                             <td>Classic 1460's. Trendy yet comfortable.</td>
                             <td>50.00</td>
                             <td><div class="img-prev" style="background-image:url(images/boots.png)"></div></td>
@@ -58,6 +60,7 @@
                         </tr>
                         <tr>
                             <td>Yeezy Boost</td>
+                            <td>Shoes</td>
                             <td>Get that casual or sporty look. Thank you Kanye.</td>
                             <td>25.00</td>
                             <td><div class="img-prev" style="background-image:url(images/shoes.png)"></div></td>
@@ -67,6 +70,7 @@
                         </tr>
                         <tr>
                             <td>Muji Slippers</td>
+                            <td>Slippers</td>
                             <td>Feel like you're stepping on clouds.</td>
                             <td>30.00</td>
                             <td><div class="img-prev" style="background-image:url(images/slippers.png)"></div></td>
@@ -76,6 +80,7 @@
                         </tr>
                         <tr>
                             <td>Birkenstock Sandals</td>
+                            <td>Sandals</td>
                             <td>For when your toes want to see the sun.</td>
                             <td>20.00</td>
                             <td><div class="img-prev" style="background-image:url(images/sandals.png)"></div></td>

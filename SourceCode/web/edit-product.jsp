@@ -46,6 +46,17 @@
                     </div>
                 </div>
                 <div class="row">
+                  <div class="five columns">
+                    <label for="productType">Product Type</label>
+                    <select class="u-full-width" id="productType">
+                      <option value="Shoes">Shoes</option>
+                      <option value="Boots">Boots</option>
+                      <option value="Sandals">Sandals</option>
+                      <option value="Boots">Slippers</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
                     <div class="eight columns">
                         <label for="productName">Product Description</label>
                         <input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" value="Classic 1460's. Trendy yet comfortable.">
