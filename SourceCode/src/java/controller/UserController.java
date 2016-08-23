@@ -28,11 +28,19 @@ public class UserController {
         if (user.getUsername().equals(username)) {
             if (ph.checkPassword(password, user.getPassword())) {
                 valid = true;
+                /* set attempts = 0 */
+                user.setAttempts(0);
+                userDB.setLoginAttempt(user);
             } else { /* password is not correct */
-
                 user.setAttempts(user.getAttempts() + 1);
                 userDB.setLoginAttempt(user);
             }
+        }
+        
+        if(valid == true) {
+            System.out.println("Successfully signed in!");
+        } else {
+            System.out.println("Invalid username and/or password!");
         }
 
         return valid;
@@ -48,6 +56,13 @@ public class UserController {
                 username, password, email, accountType);
         
         isAdded = userDB.addUser(user);
+        
+        if(isAdded == true) {
+            System.out.println("Successfully added new user!");
+        } else {
+            System.out.println("Failed to add user!");
+        }
+        
         return isAdded;
     }
 }

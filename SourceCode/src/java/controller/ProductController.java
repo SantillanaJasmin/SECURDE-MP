@@ -17,7 +17,7 @@ import model.Review;
  */
 public class ProductController {
     /* add check user type*/
-    public boolean addProduct(String category, String name, String description, float price) {
+    public boolean addProduct(String category, String name, String description, double price) {
         ProductDB db = new ProductDB();
         BigDecimal prices = BigDecimal.valueOf(price);
         Product product = new Product();

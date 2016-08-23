@@ -6,6 +6,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.sql.Blob;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Product {
     private String productName;
     private String productDescription;
     private BigDecimal productPrice;
+    private Blob picture;
 
     /**
      * @return the productId
@@ -87,5 +89,25 @@ public class Product {
     public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
+    
+    public String toString() {
+        return this.productId + "\t" + this.productName + "\t" + this.productCategory
+                + "\t" + this.productDescription + "\t" + this.productPrice;
+    }
+
+    /**
+     * @return the picture
+     */
+    public Blob getPicture() {
+        return picture;
+    }
+
+    /**
+     * @param picture the picture to set
+     */
+    public void setPicture(Blob picture) {
+        this.picture = picture;
+    }
+
 
 }
