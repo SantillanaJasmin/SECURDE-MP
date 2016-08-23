@@ -26,8 +26,10 @@ public class ProductController {
         product.setProductDescription(description);
         product.setProductPrice(prices);
         
+        int categoryId = db.getCategoryId(category);
+        
         boolean added = false;
-        if(db.addProduct(product) == 1)
+        if(db.addProduct(product, categoryId) == 1)
             added = true;
         
         return added;
@@ -47,4 +49,5 @@ public class ProductController {
         ProductDB db = new ProductDB();
         return db.getProductReviews(productId);
     }
+    
 }

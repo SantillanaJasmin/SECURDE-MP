@@ -22,7 +22,7 @@ import model.Review;
  */
 public class ProductDB {
     
-    public int addProduct(Product product) {
+    public int addProduct(Product product, int category) {
         int id = 0;
         
         try {
@@ -32,7 +32,7 @@ public class ProductDB {
                     + "(product_category, product_name, product_desc, product_price)"
                     + " VALUES(?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, getCategoryId(product.getProductCategory()));
+            stmt.setInt(1, category);
             stmt.setString(2, product.getProductName());
             stmt.setString(3, product.getProductDescription());
             stmt.setBigDecimal(4, product.getProductPrice());
@@ -50,16 +50,17 @@ public class ProductDB {
         try {
             DatabaseConnection dbc = new DatabaseConnection();
             Connection conn = dbc.getConnection();
-            String sql = "SELECT category_id FROM category "
-                    + "WHERE category_name = ?";
+            String sql = "SELECT * FROM category "
+                    + " WHERE category_name LIKE ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, category);
             
-            ResultSet result;
+            ResultSet result = null;
             result = stmt.executeQuery();
-            if(result!=null) {
+            if(result.next()) {
                 cat_id = result.getInt("category_id");
             }
+            System.out.println("Category ID: "+cat_id);
         } catch (SQLException ex) {
             Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -152,7 +153,7 @@ public class ProductDB {
             Connection conn = dbc.getConnection();
             String sql = "SELECT * FROM review, useraccount "
                     + " WHERE review.user_id = useraccount.user_id "
-                    + " AND review_id = ?";
+                    + " AND product_id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, productId);
             
@@ -163,7 +164,7 @@ public class ProductDB {
                 review = new Review();
                 review.setReviewId(result.getInt("review_id"));
                 review.setProductId(result.getInt("product_id"));
-                review.setUsername(result.getString("username"));
+                review.setUsername(result.getString("user_name"));
                 review.setReviewRate(result.getInt("review_rate"));
                 review.setContent(result.getString("content"));
                 reviewList.add(review);
@@ -174,4 +175,5 @@ public class ProductDB {
         
         return reviewList;
     }
+
 }
