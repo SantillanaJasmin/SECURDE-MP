@@ -27,20 +27,20 @@ public class UserController {
         PasswordHashing ph = new PasswordHashing();
         if (user.getUsername().equals(username)) {
             if (ph.checkPassword(password, user.getPassword())) {
-                valid = true;
-                /* set attempts = 0 */
-                user.setAttempts(0);
-                userDB.setLoginAttempt(user);
+                if(user.isActive()) {
+                    valid = true;
+                    /* set attempts = 0 */
+                    user.setAttempts(0);
+                    userDB.setLoginAttempt(user);
+                    System.out.println("Successfully signed in!");
+                } else {
+                    System.out.println("Account is not active, please contact administrator!");
+                }
             } else { /* password is not correct */
                 user.setAttempts(user.getAttempts() + 1);
                 userDB.setLoginAttempt(user);
+                System.out.println("Invalid username and/or password!");
             }
-        }
-        
-        if(valid == true) {
-            System.out.println("Successfully signed in!");
-        } else {
-            System.out.println("Invalid username and/or password!");
         }
 
         return valid;
@@ -64,5 +64,21 @@ public class UserController {
         }
         
         return isAdded;
+    }
+    
+    public boolean setAccountActive(User user, boolean active) {
+        boolean setActive = false;
+        /* check first whether current user has this priviledge */
+        UserDB db = new UserDB();
+        int set = 0;
+        if(active) {
+            set = 1;
+        }
+        setActive = db.setActiveAccount(user.getUsername(), set);
+        if(set == 1) {
+            user.setAttempts(0);
+            db.setLoginAttempt(user);
+        }
+        return setActive;
     }
 }

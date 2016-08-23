@@ -17,6 +17,7 @@ public class User {
     private Name name;
     private String email;
     private int attempts;
+    private boolean active;
 
     public User(String firstName, String middleInitial, String lastName, 
             String username, String password, String email, int accountType) {
@@ -128,6 +129,20 @@ public class User {
      */
     public void setAttempts(int attempts) {
         this.attempts = attempts;
+    }
+
+    /**
+     * @return the active
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * @param active the active to set
+     */
+    public void setActive(boolean active) {
+        this.active = active;
     }
     
     

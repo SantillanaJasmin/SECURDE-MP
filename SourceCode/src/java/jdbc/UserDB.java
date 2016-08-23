@@ -36,7 +36,7 @@ public class UserDB {
         try {
             conn = (Connection) dbc.getConnection();
             String sql = "SELECT * FROM useraccount "
-                    + " WHERE user_name = ? AND active = 1";
+                    + " WHERE user_name = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             
@@ -54,7 +54,10 @@ public class UserDB {
                 name.setMiddleInitial(result.getString("middle_initial"));
                 name.setLastName(result.getString("last_name"));
                 user.setName(name);
-                
+                boolean active = false;
+                if(result.getInt("active")==1)
+                    active = true;
+                user.setActive(active);
             }
             
         } catch (SQLException ex) {
@@ -99,14 +102,15 @@ public class UserDB {
             } 
             
             if(user.getAttempts() > 5) {
-                sql = "UPDATE useraccount SET active = ? "
-                        + " WHERE user_name = ?";
-                stmt.setInt(1, 0); 
-                stmt.setString(2, user.getUsername());
-                
-                int lockout = stmt.executeUpdate();
-                if(lockout == 1) {
+//                sql = "UPDATE useraccount SET active = 0 "
+//                        + " WHERE user_name = ?";
+//                stmt = conn.prepareStatement(sql);
+//                stmt.setString(1, user.getUsername());
+//                
+//                int lockout = stmt.executeUpdate();
+                if(setActiveAccount(user.getUsername(), 0)) {
                     // lockout account
+                    System.out.println("Locked out account: "+user.getUsername());
                 }
             }
             
@@ -129,6 +133,46 @@ public class UserDB {
         }
         return updated;
     }
+    
+    public boolean setActiveAccount(String username, int active) {
+        boolean set = false;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            conn = (Connection) dbc.getConnection();
+            
+            String sql = "UPDATE useraccount SET active = ? "
+                        + " WHERE user_name = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, active);
+            stmt.setString(2, username);
+                
+            int result = stmt.executeUpdate();
+            if(result == 1) {
+                set = true;
+            } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se) {
+            }
+            try {
+                if(conn != null) {
+                    conn.close();
+                }
+            } catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return set;
+    } 
     
     public boolean addUser(User user) {
         Connection conn = null;
@@ -177,4 +221,6 @@ public class UserDB {
         }
         return added;
     }
+    
+    
 }
