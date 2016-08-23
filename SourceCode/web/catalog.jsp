@@ -22,15 +22,22 @@
             </div>
             <div id="links">
                 <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/catalog.html">Catalog</a></li>
+                    <li><a href="catalog.jsp">Home</a></li>
+                    <li><a href="catalog.jsp">Catalog</a></li>
                 </ul>
             </div>
             <div id="account">
                 <ul>
-                    <li><a href="/index.html">Cart (<span>0</span>)</a></li>
-                    <li><a href="/catalog.html">Account</a></li>
-                    <li><a href="/catalog.html">Log Out</a></li>
+                        <li><a href="cart.jsp">Cart (<span>${cartSize}</span>)</a></li>
+                        
+<!--                    <li>
+                        <form action="cart.jsp" method="POST">
+                            <input type="hidden" name="cartList" value="${cartList}">
+                            <input type="submit" value="Cart (${cartSize})" style="color: white; padding: 0; border: none; background: none;">
+                        </form>
+                    </li> -->
+                    <li><a href="catalog.html">Account</a></li>
+                    <li><a href="index.jsp">Log Out</a></li>
                 </ul>
             </div>
         </div>
@@ -39,7 +46,7 @@
         <div class="wrapper">
             <div class="row">
                 <% int ctr = 0;%>
-                <c:forEach var="product" items="${productList}" varStatus="loop">
+                <c:forEach var="product" items="${productList}">
                     <% if (ctr == 3) { %>
                 </div>
                 <div class="row">

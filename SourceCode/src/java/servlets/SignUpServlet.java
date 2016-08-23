@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import controller.CartController;
 import controller.PasswordHashing;
 import controller.UserController;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 import jdbc.DatabaseConnection;
 import jdbc.ProductDB;
 import model.Product;
+import model.TransactionItem;
+import model.User;
 
 /**
  *
@@ -106,7 +110,14 @@ public class SignUpServlet extends HttpServlet {
             ProductDB pdb = new ProductDB();
             List<Product> productList = pdb.getProducts();
                     
+            User user = uc.getUser(username);
+            CartController cc = new CartController();
+            ArrayList<TransactionItem> cartList = cc.getCart(user.getUserId());
+            int cartSize = cartList.size();
+                    
             request.setAttribute("productList", productList);
+            request.setAttribute("cartList", cartList);
+            request.setAttribute("cartSize", cartSize);
             request.getRequestDispatcher("catalog.jsp").forward(request,response); 
             //response.sendRedirect("catalog.jsp");
         }

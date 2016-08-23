@@ -1,3 +1,5 @@
+<%@page import="model.TransactionItem"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,15 +19,15 @@
             </div>
             <div id="links">
                 <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/catalog.html">Catalog</a></li>
+                    <li><a href="catalog.jsp">Home</a></li>
+                    <li><a href="catalog.jsp">Catalog</a></li>
                 </ul>
             </div>
             <div id="account">
                 <ul>
-                    <li><a href="/index.html">Cart (<span>0</span>)</a></li>
-                    <li><a href="/catalog.html">Account</a></li>
-                    <li><a href="/catalog.html">Log Out</a></li>
+                    <li><a href="cart.jsp">Cart (<span>0</span>)</a></li>
+                    <li><a href="catalog.html">Account</a></li>
+                    <li><a href="index.jsp">Log Out</a></li>
                 </ul>
             </div>
         </div>
@@ -44,33 +46,18 @@
                         </tr>
                     </thead>
                     <tbody>
+<!--                        <c:forEach var="cart" items="<%request.getParameter("cartList");%>">
                         <tr>
-                            <td>Shoe</td>
-                            <td><span>5.00</span></td>
-                            <td>4</td>
-                            <td>20.00</td>
+                            <td>${cart.productName}</td>
+                            <td><span>${cart.price}</span></td>
+                            <td>${cart.quantity}</td>
+                            <td>${cart.subtotal}</td>
                             <td>
                                 <span class="remove">Remove</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Boots</td>
-                            <td>10.00</td>
-                            <td>3</td>
-                            <td>30.00</td>
-                            <td>
-                                <span class="remove">Remove</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sandals</td>
-                            <td>7.00</td>
-                            <td>3</td>
-                            <td>21.00</td>
-                            <td>
-                                <span class="remove">Remove</span>
-                            </td>
-                        </tr>
+                        </c:foreach>
+-->
                     </tbody>
                 </table>
                 <div style="float: right">

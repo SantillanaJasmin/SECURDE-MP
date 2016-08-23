@@ -81,4 +81,9 @@ public class UserController {
         }
         return setActive;
     }
+    
+    public User getUser(String username){
+        UserDB userDB = new UserDB();
+        return userDB.signIn(username);
+    }
 }
