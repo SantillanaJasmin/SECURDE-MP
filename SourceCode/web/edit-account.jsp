@@ -1,9 +1,3 @@
-<%-- 
-    Document   : edit-account
-    Created on : Aug 17, 2016, 12:38:00 AM
-    Author     : Jasmin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,8 +11,20 @@
         <link rel="stylesheet" href="css/edit-product-style.css" />
         <link rel="stylesheet" href="css/checkout-style.css" />
         <link rel="stylesheet" href="css/create-account-style.css" />
+        
+       
     </head>
     <body>
+        <script src="js/jquery.js"></script>
+        <script src="js/create-account.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#nav-bar').addClass("sticky");
+            });
+            $(window).scroll(function() {
+                $('#nav-bar').addClass("sticky");
+            });
+        </script>
         <div id="confirm-password-overlay"></div>
         <div id="confirm-password-box">
             <h4>Confirm password to continue</h4>
@@ -98,15 +104,5 @@
         <div class="footer">
 
         </div>
-        <script src="js/jquery.js"></script>
-        <script src="js/create-account.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('#nav-bar').addClass("sticky");
-            });
-            $(window).scroll(function() {
-                $('#nav-bar').addClass("sticky");
-            });
-        </script>
     </body>
 </html>
