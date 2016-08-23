@@ -12,9 +12,11 @@ import java.math.BigDecimal;
  * @author Joy
  */
 public class TransactionItem {
+    private String productName;
     private int transactionId;
     private int productId;
     private int quantity;
+    private BigDecimal price;
     private BigDecimal subtotal;
 
     /**
@@ -73,4 +75,35 @@ public class TransactionItem {
         this.subtotal = subtotal;
     }
 
+    /**
+     * @return the productName
+     */
+    public String getProductName() {
+        return productName;
+    }
+
+    /**
+     * @param productName the productName to set
+     */
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    /**
+     * @return the price
+     */
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+    
+    public String toString() {
+        return productName + "\t" + price + "\t" + quantity + "\t" + subtotal;
+    }
 }

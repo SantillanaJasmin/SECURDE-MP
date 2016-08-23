@@ -21,8 +21,8 @@ import model.TransactionItem;
  */
 public class CartDB {
 
-    public int addToCart(int productId, int userId, int quantity) {
-        int cartId = 0;
+    public boolean addToCart(int productId, int userId, int quantity) {
+        boolean added = false;
         PreparedStatement stmt = null;
         DatabaseConnection dbc = new DatabaseConnection();
         try {
@@ -34,12 +34,36 @@ public class CartDB {
             stmt.setInt(2, userId);
             stmt.setInt(3, quantity);
             
-            cartId = stmt.executeUpdate();
+            int result = stmt.executeUpdate();
+            if(result == 1)
+                added = true;
         } catch (SQLException ex) {
             Logger.getLogger(CartDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return cartId;
+        return added;
+    }
+    
+    public boolean removeFromCart(int productId, int userId, int quantity) {
+        boolean added = false;
+        PreparedStatement stmt = null;
+        DatabaseConnection dbc = new DatabaseConnection();
+        try {
+            Connection conn = dbc.getConnection();
+            String sql = "DELETE FROM cart "
+                    + " WHERE product_id = ? AND user_id = ? ";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, productId);
+            stmt.setInt(2, userId);
+            
+            int result = stmt.executeUpdate();
+            if(result == 1)
+                added = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return added;
     }
     
     public ArrayList<TransactionItem> getCart(int userId) {
@@ -48,8 +72,10 @@ public class CartDB {
         DatabaseConnection dbc = new DatabaseConnection();
         try {
             Connection conn = dbc.getConnection();
-            String sql = "SELECT * FROM getCart "
-                    + " WHERE user_id = ? ";
+            String sql = "SELECT product_name, product_price, quantity, "
+                    + " (product_price*quantity) AS subtotal FROM cart, product "
+                    + " WHERE cart.product_id = product.product_id "
+                    + " AND user_id = ? ";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, userId);
             
@@ -59,8 +85,10 @@ public class CartDB {
             
             while(result.next()) {
                 item = new TransactionItem();
-                item.setProductId(result.getInt("product_id"));
+                item.setProductName(result.getString("product_name"));
                 item.setQuantity(result.getInt("quantity"));
+                item.setPrice(result.getBigDecimal("product_price"));
+                item.setSubtotal(result.getBigDecimal("subtotal"));
                 cart.add(item);
             }
             
