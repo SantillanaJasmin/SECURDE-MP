@@ -121,6 +121,14 @@ body{
   cursor: pointer;
   font-style: italic;
 }
+
+.delete{
+  color: #ddc9a3;
+}
+.delete:hover{
+  cursor: pointer;
+  font-style: italic;
+}
 .wrapper a, .wrapper a:hover, .wrapper a:visited{
     text-decoration: none;
     color: #ddc9a3;
