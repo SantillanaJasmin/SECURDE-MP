@@ -42,21 +42,23 @@
                 <div class="six columns" id="purchase-info">
                     <jsp:declaration>
                         String name = "";
-                        String price= "";
+                        String price = "";
                     </jsp:declaration>
-                    
+
                     <jsp:scriptlet>
-                        name = request.getParameter("itemName");
-                        price = request.getParameter("itemPrice");
+                    name = request.getParameter("itemName");
+                    price = request.getParameter("itemPrice");
                     </jsp:scriptlet>
-                    <h3 class="item-name"><jsp:expression>name</jsp:expression></h3>
-                    <h4 class="item-price">$<jsp:expression>price</jsp:expression></h4>
-                    <!-- <div class="order-quantity">
-                      <div class="button-minus">-</div>
-                      <input type="number" name="quantity" value="0">
-                      <div class="button-plus">+</div>
-                    </div> -->
-                    <form>
+                    
+                    <form action="AddToCartServlet" method="POST">
+                        <h3 class="item-name" name="productName"><jsp:expression>name</jsp:expression></h3>
+                        <h4 class="item-price" name="productPrice">$<jsp:expression>price</jsp:expression></h4>
+                        <!-- <div class="order-quantity">
+                          <div class="button-minus">-</div>
+                          <input type="number" name="quantity" value="0">
+                          <div class="button-plus">+</div>
+                        </div> -->
+
                         How many would you like to order?
                         <input type="number" name="quantity" min="1"><br />
                         <button type="submit">Add to Cart</button>
