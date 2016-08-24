@@ -44,19 +44,18 @@ public class CartDB {
         return added;
     }
     
-    public boolean removeFromCart(int userId, int productId, int quantity) {
+    public boolean removeFromCart(int cartId) {
         boolean added = false;
         PreparedStatement stmt = null;
         DatabaseConnection dbc = new DatabaseConnection();
         try {
             Connection conn = dbc.getConnection();
             String sql = "DELETE FROM cart "
-                    + " WHERE product_id = ? AND user_id = ? ";
+                    + " WHERE cart_id = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, productId);
-            stmt.setInt(2, userId);
-            
-            int result = stmt.executeUpdate();
+            stmt.setInt(1, cartId);
+
+            int result = stmt.executeUpdate();           
             if(result == 1)
                 added = true;
         } catch (SQLException ex) {
@@ -72,7 +71,7 @@ public class CartDB {
         DatabaseConnection dbc = new DatabaseConnection();
         try {
             Connection conn = dbc.getConnection();
-            String sql = "SELECT product_name, product_price, quantity, "
+            String sql = "SELECT cart_id, cart.product_id, product_name, product_price, quantity, "
                     + " (product_price*quantity) AS subtotal FROM cart, product "
                     + " WHERE cart.product_id = product.product_id "
                     + " AND user_id = ? ";
@@ -85,6 +84,8 @@ public class CartDB {
             
             while(result.next()) {
                 item = new TransactionItem();
+                item.setCartId(result.getInt("cart_id"));
+                item.setProductId(result.getInt("product_id"));
                 item.setProductName(result.getString("product_name"));
                 item.setQuantity(result.getInt("quantity"));
                 item.setPrice(result.getBigDecimal("product_price"));

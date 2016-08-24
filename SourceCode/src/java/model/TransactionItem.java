@@ -12,12 +12,22 @@ import java.math.BigDecimal;
  * @author Joy
  */
 public class TransactionItem {
+    private int cartId;
+
     private String productName;
     private int transactionId;
     private int productId;
     private int quantity;
     private BigDecimal price;
     private BigDecimal subtotal;
+    
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
 
     /**
      * @return the transactionId

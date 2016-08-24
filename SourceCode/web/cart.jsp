@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="model.TransactionItem"%>
 <%@page import="java.util.ArrayList"%>
@@ -47,33 +48,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         <% ArrayList<TransactionItem> cartList = (ArrayList<TransactionItem>) session.getAttribute("cartList");
-                           BigDecimal subTotal = new BigDecimal(0);
-                            for(int i =0 ; i < cartList.size() ; i++){
-                                String productName = cartList.get(i).getProductName();
+                            BigDecimal subTotal = new BigDecimal(0);
+                            for (int i = 0; i < cartList.size(); i++) {
+                                int cartId = cartList.get(i).getCartId();
+                                String productName = cartList.get(i).getProductName();;
                                 BigDecimal price = cartList.get(i).getPrice();
                                 int quantity = cartList.get(i).getQuantity();
                                 BigDecimal total = cartList.get(i).getSubtotal();
                                 subTotal = subTotal.add(total);
                         %>                       
                         <tr>
-                            <td><%= productName%></td>
-                            <td><span><%= price%></span></td>
-                            <td><%= quantity%></td>
-                            <td><%= total%></td>
-                            <td>
-                                <span class="remove">Remove</span>
-                            </td>
-                        </tr>
-                        
-                            <%}%>
+                    <form action="RemoveFromCartServlet" method="POST">
+                        <td><%= productName%></td>
+                        <td><span><%= price%></span></td>
+                        <td><%= quantity%></td>
+                        <td><%= total%></td>
+                        <td>
+                            <input type="hidden" name="cartId" value="<%= cartId%>">
+                            <span><input type="submit" value="Remove"></span>
+                        </td>
+                    </form>
+                    </tr>
+                    <%}%>
                     </tbody>
                 </table>
                 <div style="float: right">
                     <h5 style="font-weight:bold; text-align: right">Total: $<span style="font-weight: normal"><%= subTotal%></span></h5>
 
+                    <%if (cartList.size() != 0) {%>
                     <button type="submit">Proceed to Checkout</button>
+                    <%}%>
                 </div>
 
 
@@ -84,13 +90,13 @@
         </div>
         <script src="js/jquery.js"></script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('#nav-bar').addClass("sticky");
             });
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 $('#nav-bar').addClass("sticky");
             });
-            $(".remove").on('click', function(event) {
+            $(".remove").on('click', function (event) {
                 $(this).parent().parent().remove();
             });
         </script>

@@ -31,8 +31,8 @@ public class CartController {
         return db.getCart(userId);
     }
     
-    public boolean removeFromCart(int productId, int userId, int quantity) {
+    public boolean removeFromCart(int cartId) {
         CartDB db = new CartDB();
-        return db.removeFromCart(productId, userId, quantity);
+        return db.removeFromCart(cartId);
     }
 }
