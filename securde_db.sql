@@ -75,12 +75,12 @@ DROP TABLE IF EXISTS `cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1,9,1,2);
+INSERT INTO `cart` VALUES (1,1,2,3),(2,1,1,1),(3,1,0,1),(4,1,2,1),(5,1,1,1);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +131,7 @@ CREATE TABLE `product` (
   `product_desc` varchar(300) NOT NULL,
   `product_price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,7 @@ CREATE TABLE `useraccount` (
   `attempts` int(11) NOT NULL,
   `active` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +252,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES (1,'SantillanaJasmin','$2a$12$NP0OZfRpJlcXaNItVcD07OiAqsVjvUymvVhzyyecybGRftHotG4Wm',4,'Jasmin','','Santillana','jas@yahoo.com',0,1),(9,'hanna168','$2a$12$gK4E7HIV.eNEEzSbb139fuA7XZRRsZMD27pS4YPJZtvLtSjfSrlxO',4,'Hanna','H','Sha','hannastefaniesha@yahoo.com',0,1);
+INSERT INTO `useraccount` VALUES (1,'hanna168','$2a$12$UKoeqzWntAJAVJ2j/S9Q6OsD1GSZoJe9jydWv5Lu1AQFhRcUz21OW',4,'Hanna','H','Sha','hannastefaniesha@yahoo.com',0,1);
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -265,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-23 18:41:57
+-- Dump completed on 2016-08-24 16:35:53
