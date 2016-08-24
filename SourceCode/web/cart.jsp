@@ -27,7 +27,7 @@
             </div>
             <div id="account">
                 <ul>
-                    <li><a href="cart.jsp">Cart (<span><%= session.getAttribute("cartSize")%></span>)</a></li>
+                    <li><a href="cart.jsp">Cart (<span><c:out value="${sessionScope.cartSize}"/></span>)</a></li>
                     <li><a href="catalog.html">Account</a></li>
                     <li><a href="index.jsp">Log Out</a></li>
                 </ul>
@@ -78,7 +78,8 @@
                     <h5 style="font-weight:bold; text-align: right">Total: $<span style="font-weight: normal"><%= subTotal%></span></h5>
 
                     <%if (cartList.size() != 0) {%>
-                    <button type="submit">Proceed to Checkout</button>
+                    <button onclick="document.location.href='checkout.jsp'">Proceed to Checkout</button>
+                    <!--<input type="button" value="Proceed to Checkout" onclick="document.location.href='checkout.jsp'" style=""/>-->
                     <%}%>
                 </div>
 

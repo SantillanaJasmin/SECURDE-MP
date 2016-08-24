@@ -36,7 +36,7 @@
                             <input type="submit" value="Cart (${cartSize})" style="color: white; padding: 0; border: none; background: none;">
                         </form>
                     </li> -->
-                    <li><a href="catalog.html">Account</a></li>
+                    <li><a href="catalog.jsp">Account</a></li>
                     <li><a href="index.jsp">Log Out</a></li>
                 </ul>
             </div>

@@ -10,12 +10,12 @@ package model;
  * @author Joy
  */
 public class Address {
-    private String houseNo;
-    private String street;
-    private String subdivision;
-    private String city;
-    private String postalCode;
-    private String country;
+    private String houseNo = "";
+    private String street = "";
+    private String subdivision = "";
+    private String city = "";
+    private String postalCode = "";
+    private String country = "";
 
     /**
      * @return the houseNo
@@ -99,5 +99,9 @@ public class Address {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public String toString() {
+        return houseNo + " " + street + ", " + subdivision + ", " + city + ", " + country + " " + postalCode;
     }
 }
