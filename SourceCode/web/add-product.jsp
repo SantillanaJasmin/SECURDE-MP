@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="css/edit-product-style.css" />
     </head>
     <body>
+        <script src="js/jquery.js"></script>
+        <script src="js/edit-product.js"></script>
         <div id="confirm-password-overlay"></div>
         <div id="confirm-password-box">
             <h4>Confirm password to continue</h4>
@@ -37,26 +39,40 @@
         <!-- END NAV-->
         <div class="wrapper" style="display: block">
             <h1>Add Product</h1>
-            <form method= "post" onsubmit="return checkSubmit();">
+            <form method= "post" action="AddProductServlet" onsubmit="return checkSubmit();">
                 <div class="row">
                     <div class="eight columns">
                         <label for="productName">Product Name</label>
-                        <input class="u-full-width" type="text" placeholder="Product Name" id="productName">
+                        <input class="u-full-width" type="text" placeholder="Product Name" id="productName" name="productName">
                     </div>
                 </div>
                 <div class="row">
                     <div class="eight columns">
                         <label for="productName">Product Description</label>
-                        <input class="u-full-width" type="text" placeholder="Descripion" id="productPrice">
+                        <input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" name="productDesc">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="six columns">
-                        <label for="productName">Product Price ($)</label>
-                        <input class="u-full-width" type="number" min="1" placeholder="Price" id="productPrice">
+                    <div class="eight columns">
+                        <label for="productCategory">Product Category</label>
+                        <!--<input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" name="productDesc">-->
+                        <select name="category" id="single1" name="productCategory">
+                            <option>Boots</option>
+                            <option>Shoes</option>
+                            <option>Sandals</option>
+                            <option>Slippers</option>
+                        </select>
                     </div>
                 </div>
-                <input type="file" name="pic" accept="image/*">
+
+
+                <div class="row">
+                    <div class="six columns">
+                        <label for="productName">Product Price ($)</label>
+                        <input class="u-full-width" type="number" min="1" placeholder="Price" id="productPrice" name="productPrice">
+                    </div>
+                </div>
+                <input type="file" name="pic" accept="image/*" name="productImage">
                 <br />
                 <button type="submit" id="addProduct">Add Product</button>
             </form>
@@ -64,7 +80,5 @@
         <div class="footer">
 
         </div>
-        <script src="js/jquery.js"></script>
-        <script src="js/edit-product.js"></script>
     </body>
 </html>
