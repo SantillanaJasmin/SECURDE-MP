@@ -54,9 +54,9 @@
                 </div>
                 <div class="row">
                     <div class="eight columns">
-                        <label for="productCategory">Product Category</label>
+                        <label for="productCategory">Product Type</label>
                         <!--<input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" name="productDesc">-->
-                        <select name="category" id="single1" name="productCategory">
+                        <select class="u-full-width" id="productType" name="productCategory">
                             <option>Boots</option>
                             <option>Shoes</option>
                             <option>Sandals</option>
