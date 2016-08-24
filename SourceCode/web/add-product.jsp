@@ -72,7 +72,7 @@
                         <input class="u-full-width" type="number" min="1" placeholder="Price" id="productPrice" name="productPrice">
                     </div>
                 </div>
-                <input type="file" name="pic" accept="image/*" name="productImage">
+                <!--<input type="file" name="pic" accept="image/*" name="productImage">-->
                 <br />
                 <button type="submit" id="addProduct">Add Product</button>
             </form>
