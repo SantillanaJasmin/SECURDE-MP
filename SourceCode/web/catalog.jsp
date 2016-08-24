@@ -28,7 +28,7 @@
             </div>
             <div id="account">
                 <ul>
-                        <li><a href="cart.jsp">Cart (<span>${cartSize}</span>)</a></li>
+                    <li><a href="cart.jsp">Cart (<span><c:out value="${sessionScope.cartSize}"/></span>)</a></li>
                         
 <!--                    <li>
                         <form action="cart.jsp" method="POST">

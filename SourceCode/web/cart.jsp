@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="model.TransactionItem"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,7 +26,7 @@
             </div>
             <div id="account">
                 <ul>
-                    <li><a href="cart.jsp">Cart (<span>0</span>)</a></li>
+                    <li><a href="cart.jsp">Cart (<span><%= session.getAttribute("cartSize")%></span>)</a></li>
                     <li><a href="catalog.html">Account</a></li>
                     <li><a href="index.jsp">Log Out</a></li>
                 </ul>
@@ -41,27 +42,36 @@
                             <th>Item</th>
                             <th>Price ($)</th>
                             <th>Quantity</th>
-                            <th>Total</th>
+                            <th>Total ($)</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-<!--                        <c:forEach var="cart" items="<%request.getParameter("cartList");%>">
+                        
+                        <% ArrayList<TransactionItem> cartList = (ArrayList<TransactionItem>) session.getAttribute("cartList");
+                           BigDecimal subTotal = new BigDecimal(0);
+                            for(int i =0 ; i < cartList.size() ; i++){
+                                String productName = cartList.get(i).getProductName();
+                                BigDecimal price = cartList.get(i).getPrice();
+                                int quantity = cartList.get(i).getQuantity();
+                                BigDecimal total = cartList.get(i).getSubtotal();
+                                subTotal = subTotal.add(total);
+                        %>                       
                         <tr>
-                            <td>${cart.productName}</td>
-                            <td><span>${cart.price}</span></td>
-                            <td>${cart.quantity}</td>
-                            <td>${cart.subtotal}</td>
+                            <td><%= productName%></td>
+                            <td><span><%= price%></span></td>
+                            <td><%= quantity%></td>
+                            <td><%= total%></td>
                             <td>
                                 <span class="remove">Remove</span>
                             </td>
                         </tr>
-                        </c:foreach>
--->
+                        
+                            <%}%>
                     </tbody>
                 </table>
                 <div style="float: right">
-                    <h5 style="font-weight:bold; text-align: right">Total: $<span style="font-weight: normal">71.00</span></h5>
+                    <h5 style="font-weight:bold; text-align: right">Total: $<span style="font-weight: normal"><%= subTotal%></span></h5>
 
                     <button type="submit">Proceed to Checkout</button>
                 </div>

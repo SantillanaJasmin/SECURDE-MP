@@ -51,8 +51,10 @@
                     </jsp:scriptlet>
                     
                     <form action="AddToCartServlet" method="POST">
-                        <h3 class="item-name" name="productName"><jsp:expression>name</jsp:expression></h3>
-                        <h4 class="item-price" name="productPrice">$<jsp:expression>price</jsp:expression></h4>
+                        <h3 class="item-name"><jsp:expression>name</jsp:expression></h3>
+                        <h4 class="item-price">$<jsp:expression>price</jsp:expression></h4>
+                        <input type="hidden" name="productName" value="<jsp:expression>name</jsp:expression>">
+                        <input type="hidden" name="productPrice" value="<jsp:expression>price</jsp:expression>">
                         <!-- <div class="order-quantity">
                           <div class="button-minus">-</div>
                           <input type="number" name="quantity" value="0">

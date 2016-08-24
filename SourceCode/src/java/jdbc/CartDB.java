@@ -21,17 +21,17 @@ import model.TransactionItem;
  */
 public class CartDB {
 
-    public boolean addToCart(int productId, int userId, int quantity) {
+    public boolean addToCart(int userId, int productId, int quantity) {
         boolean added = false;
         PreparedStatement stmt = null;
         DatabaseConnection dbc = new DatabaseConnection();
         try {
             Connection conn = dbc.getConnection();
-            String sql = "INSERT INTO cart (product_id, user_id, quantity) "
+            String sql = "INSERT INTO cart (user_id, product_id, quantity) "
                     + " VALUES (?,?,?) ";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, productId);
-            stmt.setInt(2, userId);
+            stmt.setInt(1, userId);
+            stmt.setInt(2, productId);
             stmt.setInt(3, quantity);
             
             int result = stmt.executeUpdate();
@@ -44,7 +44,7 @@ public class CartDB {
         return added;
     }
     
-    public boolean removeFromCart(int productId, int userId, int quantity) {
+    public boolean removeFromCart(int userId, int productId, int quantity) {
         boolean added = false;
         PreparedStatement stmt = null;
         DatabaseConnection dbc = new DatabaseConnection();

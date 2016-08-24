@@ -24,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import jdbc.DatabaseConnection;
 import jdbc.ProductDB;
 import model.Product;
@@ -100,6 +101,9 @@ public class SignInServlet extends HttpServlet {
         } else {
             //alert for incorrect username of password;
             System.out.println("Pasok");
+            
+            HttpSession session = request.getSession();
+            
             ProductDB pdb = new ProductDB();
             List<Product> productList = pdb.getProducts();
                     
@@ -108,12 +112,13 @@ public class SignInServlet extends HttpServlet {
             ArrayList<TransactionItem> cartList = cc.getCart(user.getUserId());
             int cartSize = cartList.size();
             
-            request.setAttribute("productList", productList);
-            request.setAttribute("cartList", cartList);
-            request.setAttribute("cartSize", cartSize);
-            //request.setAttribute("Subtotal", subtotal);
+            System.out.println("username: " + username + " " + user.getUserId());
+            session.setAttribute("user", user);
+            session.setAttribute("productList", productList);
+            session.setAttribute("cartList", cartList);
+            session.setAttribute("cartSize", cartSize);
+
             request.getRequestDispatcher("catalog.jsp").forward(request,response); 
-            //response.sendRedirect("catalog.jsp");
         }
     }
 

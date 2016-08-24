@@ -23,7 +23,7 @@ public class CartController {
     
     public boolean addToCart(int userId, int productId, int quantity) {
         CartDB db = new CartDB();
-        return db.addToCart(productId, userId, quantity);
+        return db.addToCart(userId, productId, quantity);
     }
     
     public ArrayList<TransactionItem> getCart(int userId) {
@@ -31,7 +31,7 @@ public class CartController {
         return db.getCart(userId);
     }
     
-    public boolean removeFromCart(int userId, int productId, int quantity) {
+    public boolean removeFromCart(int productId, int userId, int quantity) {
         CartDB db = new CartDB();
         return db.removeFromCart(productId, userId, quantity);
     }
