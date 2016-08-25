@@ -4,6 +4,8 @@
     Author     : Jasmin
 --%>
 
+<%@page import="model.TransactionItem"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,6 +49,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            ArrayList<TransactionItem> sales = (ArrayList<TransactionItem>) request.getAttribute("salesList");
+                            TransactionItem item;
+                            for (int i = 0; i < sales.size(); i++) {
+                                item = sales.get(i);
+                                %>
+                        <tr>
+                            <td><%=item.getProductName()%></td>
+                            <td><%=item.getPrice()%></td>
+                            <td><%=item.getQuantity()%></td>
+                            <td><%=item.getSubtotal()%></td>
+                        </tr>        
+                        <%        
+                            }
+                        %>
                       <tr>
                           <td>Birkenstock Sandals</td>
                           <td>For when your toes want to see the sun.</td>
