@@ -43,6 +43,14 @@
         <servlet-name>DeleteProductServlet</servlet-name>
         <servlet-class>servlets.DeleteProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTransactionServlet</servlet-name>
+        <servlet-class>servlets.AddTransactionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewSalesServlet</servlet-name>
+        <servlet-class>servlets.ViewSalesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignInServlet</servlet-name>
         <url-pattern>/SignInServlet</url-pattern>
@@ -70,6 +78,14 @@
     <servlet-mapping>
         <servlet-name>DeleteProductServlet</servlet-name>
         <url-pattern>/DeleteProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTransactionServlet</servlet-name>
+        <url-pattern>/AddTransactionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewSalesServlet</servlet-name>
+        <url-pattern>/ViewSalesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
