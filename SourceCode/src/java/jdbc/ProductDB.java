@@ -175,5 +175,52 @@ public class ProductDB {
         
         return reviewList;
     }
+    
+    public boolean editProduct(Product product) {
+        boolean edited = false;
+        
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            Connection conn = dbc.getConnection();
+            String sql = "UPDATE product SET product_name = ?, "
+                    + " product_desc = ?, product_price = ? "
+                    + " WHERE product_id = ? ";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, product.getProductName());
+            stmt.setString(2, product.getProductDescription());
+            stmt.setBigDecimal(3, product.getProductPrice());
+            stmt.setInt(4, product.getProductId());
+            
+            if(stmt.executeUpdate() == 1) { // if id = 0 then product is not edited
+                edited = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return edited;
+    }
 
+    public Product getProduct(int productId) {
+        Product product = new Product();
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            Connection conn = dbc.getConnection();
+            String sql = "SELECT * FROM product WHERE product_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, productId);
+            ResultSet result;
+            result = stmt.executeQuery();
+            if(result.next()) {
+                product.setProductId(result.getInt("product_id"));
+                product.setProductName(result.getString("product_name"));
+                product.setProductCategory(result.getString("category_name"));
+                product.setProductDescription(result.getString("product_desc"));
+                product.setProductPrice(result.getBigDecimal("product_price"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return product;
+    }
 }

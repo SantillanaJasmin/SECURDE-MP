@@ -50,4 +50,24 @@ public class ProductController {
         return db.getProductReviews(productId);
     }
     
+    public Product getProduct(int productId) {
+        ProductDB db = new ProductDB();
+        return db.getProduct(productId);
+    }
+    
+    public boolean editProduct(Product product, String name, String description, 
+            double price) {
+        ProductDB db = new ProductDB();
+        if(name != null) {
+            product.setProductName(name);
+        }
+        if(description != null) {
+            product.setProductDescription(description);
+        }
+        if(price != 0) {
+            BigDecimal prices = BigDecimal.valueOf(price);
+            product.setProductPrice(prices);
+        }
+        return db.editProduct(product);
+    }
 }
