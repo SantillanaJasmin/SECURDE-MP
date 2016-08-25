@@ -55,5 +55,8 @@ public class TransactionController {
         return transDB.AddTransaction(transaction);
     }
     
-    
+    public ArrayList<TransactionItem> getSales() throws SQLException {
+        TransactionDB db = new TransactionDB();
+        return db.viewSales();
+    }
 }

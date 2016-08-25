@@ -7,7 +7,9 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -119,5 +121,38 @@ public class TransactionDB {
         }   
         
         return id;
+    }
+    
+    public ArrayList<TransactionItem> viewSales() {
+        ArrayList<TransactionItem> sales = new ArrayList<TransactionItem>();
+        DatabaseConnection dbc = new DatabaseConnection();
+        try {
+            Connection conn = dbc.getConnection();
+            String sql = "SELECT product.product_id, product_name, "
+                    + " product_price, SUM(product_quantity) AS quantity, "
+                    + " SUM(sub_total) AS total "
+                    + " FROM transactionitems, product "
+                    + " WHERE transactionitems.product_id = product.product_id "
+                    + " GROUP BY product.product_id;";
+            Statement stmt = conn.createStatement();
+            
+            ResultSet result = null;
+            result = stmt.executeQuery(sql);
+            TransactionItem item;
+            
+            while(result.next()) {
+                item = new TransactionItem();
+                item.setProductId(result.getInt("product_id"));
+                item.setProductName(result.getString("product_name"));
+                item.setQuantity(result.getInt("quantity"));
+                item.setPrice(result.getBigDecimal("product_price"));
+                item.setSubtotal(result.getBigDecimal("total"));
+                sales.add(item);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sales;
     }
 }
