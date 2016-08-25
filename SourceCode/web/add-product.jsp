@@ -43,13 +43,13 @@
                 <div class="row">
                     <div class="eight columns">
                         <label for="productName">Product Name</label>
-                        <input class="u-full-width" type="text" placeholder="Product Name" id="productName" name="productName">
+                        <input class="u-full-width" type="text" placeholder="Product Name" id="productName" name="productName" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="eight columns">
                         <label for="productName">Product Description</label>
-                        <input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" name="productDesc">
+                        <input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" name="productDesc" required>
                     </div>
                 </div>
                 <div class="row">
@@ -57,10 +57,10 @@
                         <label for="productCategory">Product Type</label>
                         <!--<input class="u-full-width" type="text" placeholder="Descripion" id="productPrice" name="productDesc">-->
                         <select class="u-full-width" id="productType" name="productCategory">
-                            <option>Boots</option>
-                            <option>Shoes</option>
-                            <option>Sandals</option>
-                            <option>Slippers</option>
+                            <option value="Boots">Boots</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Sandals">Sandals</option>
+                            <option value="Slippers">Slippers</option>
                         </select>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="six columns">
                         <label for="productName">Product Price ($)</label>
-                        <input class="u-full-width" type="number" min="1" placeholder="Price" id="productPrice" name="productPrice">
+                        <input class="u-full-width" type="number" min="1" placeholder="Price" id="productPrice" name="productPrice" required>
                     </div>
                 </div>
                 <!--<input type="file" name="pic" accept="image/*" name="productImage">-->
