@@ -6,6 +6,7 @@
 package controller;
 
 import java.util.ArrayList;
+import jdbc.CartDB;
 import jdbc.ProductDB;
 import model.TransactionItem;
 
@@ -20,10 +21,18 @@ public class TransactionController {
         this.cart = new ArrayList<TransactionItem>();
     }
     
-    public boolean addToCart(int productId, int quantity) {
-        boolean added = false;
-        
-        
-        return added;
+    public boolean addToCart(int userId, int productId, int quantity) {
+        CartDB db = new CartDB();
+        return db.addToCart(userId, productId, quantity);
+    }
+    
+    public ArrayList<TransactionItem> getCart(int userId) {
+        CartDB db = new CartDB();
+        return db.getCart(userId);
+    }
+    
+    public boolean checkOut(int userId) {
+        boolean checkout = false;
+        return checkout;
     }
 }
