@@ -232,8 +232,8 @@ public class UserDB {
             DatabaseConnection dbc = new DatabaseConnection();
             conn = (Connection) dbc.getConnection();
             
-            String sql = "UPDATE useraccount SET username = ? AND email = ? "
-                    + " AND password = ? WHERE user_id = ?";
+            String sql = "UPDATE useraccount SET username = ?, email = ?, "
+                    + " password = ? WHERE user_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
