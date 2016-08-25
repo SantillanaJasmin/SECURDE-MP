@@ -65,7 +65,7 @@ public class UserController {
         
         return isAdded;
     }
-    
+    /* this user parameter is the user you want to activate */
     public boolean setAccountActive(User user, boolean active) {
         boolean setActive = false;
         /* check first whether current user has this priviledge */
@@ -85,5 +85,23 @@ public class UserController {
     public User getUser(String username){
         UserDB userDB = new UserDB();
         return userDB.signIn(username);
+    }
+    
+    public boolean editUser(User user, String username, String email, String password) {
+        boolean edited = false;
+        UserDB db = new UserDB();
+        if(username != null) {
+            user.setUsername(username);
+        }
+        if(email != null) {
+            user.setEmail(email);
+        }
+        if(password != null) {
+            PasswordHashing ph = new PasswordHashing();
+            password = ph.PasswordHashing(password);
+            user.setPassword(password);
+        }
+        db.editUser(user);
+        return edited;
     }
 }

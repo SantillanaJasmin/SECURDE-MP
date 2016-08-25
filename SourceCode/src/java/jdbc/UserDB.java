@@ -222,5 +222,45 @@ public class UserDB {
         return added;
     }
     
-    
+    public boolean editUser(User user) {
+        boolean edited = false;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int result = 0;
+        
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            conn = (Connection) dbc.getConnection();
+            
+            String sql = "UPDATE useraccount SET username = ? AND email = ? "
+                    + " AND password = ? WHERE user_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getUserId());
+            result = stmt.executeUpdate();
+            if(result == 1) {
+                edited = true;
+            } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se) {
+            }
+            try {
+                if(conn != null) {
+                    conn.close();
+                }
+            } catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return edited;
+    }
 }
