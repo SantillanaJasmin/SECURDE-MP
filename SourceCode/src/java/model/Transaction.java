@@ -24,6 +24,9 @@ public class Transaction {
     private BigDecimal totalPrice;
     private ArrayList<TransactionItem> transactionItems;
     
+    public Transaction() {
+        this.orderStatus = OrderStatus.PENDING;
+    }
     /* not sure if this actually works */
     public boolean isBillShipEqual() {
         if(billAddress.equals(shipAddress))

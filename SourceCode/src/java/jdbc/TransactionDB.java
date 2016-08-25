@@ -49,15 +49,14 @@ public class TransactionDB {
             String addTransaction = "INSERT INTO product "
                     + " (user_id, order_date, bill_address, ship_address, "
                     + " order_status, credit_card_no, total_price) "
-                    + " VALUES (?,?,?,?,?,?,?) ";
+                    + " VALUES (?,CURDATE(),?,?,?,?,?) ";
             stmt = conn.prepareStatement(addTransaction);
             stmt.setInt(1, transaction.getUserId());
-            stmt.setDate(2, transaction.getOrderDate());
-            stmt.setInt(3, billAddress);
-            stmt.setInt(4, shipAddress);
-            stmt.setString(5, transaction.getOrderStatus().toString());
-            stmt.setString(6, transaction.getCreditCardNo());
-            stmt.setBigDecimal(7, transaction.getTotalPrice());
+            stmt.setInt(2, billAddress);
+            stmt.setInt(3, shipAddress);
+            stmt.setString(4, transaction.getOrderStatus().toString());
+            stmt.setString(5, transaction.getCreditCardNo());
+            stmt.setBigDecimal(6, transaction.getTotalPrice());
             
             int trans_id = stmt.executeUpdate();
             /* add items to table */

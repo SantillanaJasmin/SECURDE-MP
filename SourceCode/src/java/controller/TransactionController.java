@@ -5,9 +5,14 @@
  */
 package controller;
 
+import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import jdbc.CartDB;
 import jdbc.ProductDB;
+import jdbc.TransactionDB;
+import model.Address;
+import model.Transaction;
 import model.TransactionItem;
 
 /**
@@ -31,8 +36,24 @@ public class TransactionController {
         return db.getCart(userId);
     }
     
-    public boolean checkOut(int userId) {
-        boolean checkout = false;
-        return checkout;
+    public boolean checkOut(int userId, Address billAddress, Address shipAddress, String creditCardNo) throws SQLException {
+        CartDB cartDB = new CartDB();
+        ArrayList<TransactionItem> cart = cartDB.getCart(userId);
+        Transaction transaction = new Transaction();
+        transaction.setUserId(userId);
+        transaction.setBillAddress(billAddress);
+        transaction.setShipAddress(shipAddress);
+        transaction.setCreditCardNo(creditCardNo);
+        transaction.setTransactionItems(cart);
+        /* calculate total */
+        BigDecimal total = BigDecimal.ZERO;
+        for(int i = 0; i < cart.size(); i++) {
+            total.add(cart.get(i).getSubtotal());
+        }
+        transaction.setTotalPrice(total);
+        TransactionDB transDB = new TransactionDB();
+        return transDB.AddTransaction(transaction);
     }
+    
+    
 }
