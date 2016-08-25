@@ -35,6 +35,24 @@ public class ProductController {
         return added;
     }
     
+    public boolean editProduct(int id, String name, String desc, String price) {
+        ProductDB db = new ProductDB();
+        boolean isEdited = db.editProduct(id, name, desc, price);
+        if(isEdited) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean deleteProduct(String name) {
+        ProductDB db = new ProductDB();
+        boolean isDeleted = db.deleteProduct(name);
+        if(isDeleted) {
+            return true;
+        }
+        return false;
+    }
+    
     public ArrayList<Product> getProducts() {
         ProductDB db = new ProductDB();
         return db.getProducts();
@@ -50,24 +68,4 @@ public class ProductController {
         return db.getProductReviews(productId);
     }
     
-    public Product getProduct(int productId) {
-        ProductDB db = new ProductDB();
-        return db.getProduct(productId);
-    }
-    
-    public boolean editProduct(Product product, String name, String description, 
-            double price) {
-        ProductDB db = new ProductDB();
-        if(name != null) {
-            product.setProductName(name);
-        }
-        if(description != null) {
-            product.setProductDescription(description);
-        }
-        if(price != 0) {
-            BigDecimal prices = BigDecimal.valueOf(price);
-            product.setProductPrice(prices);
-        }
-        return db.editProduct(product);
-    }
 }
