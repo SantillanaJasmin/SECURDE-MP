@@ -125,7 +125,8 @@ public class SignUpServlet extends HttpServlet {
             session.setAttribute("cartList", cartList);
             session.setAttribute("cartSize", cartSize);
 
-            request.getRequestDispatcher("catalog.jsp").forward(request,response);
+            //request.getRequestDispatcher("catalog.jsp").forward(request,response);
+            response.sendRedirect("catalog.jsp");
         }
     }
 
