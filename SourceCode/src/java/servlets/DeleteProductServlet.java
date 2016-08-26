@@ -79,11 +79,13 @@ public class DeleteProductServlet extends HttpServlet {
         boolean isDeleted = pc.deleteProduct(name);
         
         if(isDeleted) {
-            request.setAttribute("message", "Product " + name + " has been deleted."); // Will be available as ${message}
-            request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            // request.setAttribute("message", "Product " + name + " has been deleted."); // Will be available as ${message}
+            // request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            response.sendRedirect("product-list.jsp");
         } else {
-            request.setAttribute("message", "Product " + name + " can't be deleted."); // Will be available as ${message}
-            request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            // request.setAttribute("message", "Product " + name + " can't be deleted."); // Will be available as ${message}
+            // request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            response.sendRedirect("product-list.jsp");
         }
     }
 
