@@ -99,9 +99,10 @@ public class SignInServlet extends HttpServlet {
         if(!isSignIn) {
             System.out.println("Hindi Pasok");
             request.getSession().setAttribute("message", "Invalid username and/or password. Please try again.");
-            response.sendRedirect("index.jsp");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+            //response.sendRedirect("index.jsp");
         } else {
-            //alert for incorrect username of password;
+            //alert for correct username of password;
             System.out.println("Pasok");
             
             HttpSession session = request.getSession();
