@@ -96,11 +96,13 @@ public class AddProductServlet extends HttpServlet {
         boolean isAdded = pc.addProduct(itemCategory, name, desc, Double.valueOf(price));
         
         if(isAdded) {
-            request.setAttribute("message", "Product " + name + " has been added."); // Will be available as ${message}
-            request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            //request.setAttribute("message", "Product " + name + " has been added."); // Will be available as ${message}
+            //request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            response.sendRedirect("product-list.jsp");
         } else {
-            request.setAttribute("message", "Product " + name + " can't be added."); // Will be available as ${message}
-            request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            //request.setAttribute("message", "Product " + name + " can't be added."); // Will be available as ${message}
+            //request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            response.sendRedirect("product-list.jsp");
         }
     }
 
