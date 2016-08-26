@@ -109,11 +109,13 @@ public class EditProductServlet extends HttpServlet {
         boolean isEdited = pc.editProduct(product_id, name, desc, price);
 
         if (isEdited) {
-            request.setAttribute("message", "Product " + name + " has been edited."); // Will be available as ${message}
-            request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            // request.setAttribute("message", "Product " + name + " has been edited."); // Will be available as ${message}
+            // request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            response.sendRedirect("product-list.jsp");
         } else {
-            request.setAttribute("message", "Product " + name + " can't be edited."); // Will be available as ${message}
-            request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            // request.setAttribute("message", "Product " + name + " can't be edited."); // Will be available as ${message}
+            // request.getRequestDispatcher("product-list.jsp").forward(request, response);
+            response.sendRedirect("product-list.jsp");
         }
     }
 
