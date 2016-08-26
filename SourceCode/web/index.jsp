@@ -104,6 +104,7 @@
             <div class="cover-image" style="background-image: url(images/clothingstore.jpg);"></div>
             <div class="container">
                 <br>
+                <span class="col-md-6 text-left" style="float: right; padding-top: 40px; font-size: 15px; color: white;">${message}</span><br><br>
                 <div class="row">
                     <div class="col-md-6">
                         <img src="https://unsplash.imgix.net/photo-1422728221357-57980993ea99?w=1024&amp;q=50&amp;fm=jpg&amp;s=b4a34018d745e33048bcfc326cb9907b"
