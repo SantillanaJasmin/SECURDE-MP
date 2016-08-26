@@ -87,21 +87,34 @@ public class UserController {
         return userDB.signIn(username);
     }
     
-    public boolean editUser(User user, String username, String email, String password) {
+    public boolean editUser(/*User user,*/ int id, String username, String email, String password) {
         boolean edited = false;
         UserDB db = new UserDB();
-        if(username != null) {
+        /*if(username != null) {
             user.setUsername(username);
         }
         if(email != null) {
             user.setEmail(email);
-        }
+        }*/
         if(password != null) {
             PasswordHashing ph = new PasswordHashing();
             password = ph.PasswordHashing(password);
-            user.setPassword(password);
+//            user.setPassword(password);
         }
-        db.editUser(user);
+        db.editUser(id, username, email, password);
         return edited;
+    }
+    
+    public boolean deleteUser(String name) {
+        boolean deleted = false;
+        
+        UserDB ud = new UserDB();
+        boolean isDeleted = ud.deleteUser(name);
+        if(isDeleted) {
+            return true;
+        }
+        return deleted;
+        
+        
     }
 }

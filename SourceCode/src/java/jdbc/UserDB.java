@@ -222,7 +222,49 @@ public class UserDB {
         return added;
     }
     
-    public boolean editUser(User user) {
+    public boolean editUser(int id, String username, String email, String password) {
+        boolean edited = false;
+        
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int result = 0;
+        
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            conn = (Connection) dbc.getConnection();
+            
+            String sql = "UPDATE useraccount SET user_name = ?, email = ?, "
+                    + " password = ? WHERE user_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, email);
+            stmt.setString(3, password);
+            stmt.setInt(4, id);
+            result = stmt.executeUpdate();
+            if(result == 1) {
+                edited = true;
+            } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se) {
+            }
+            try {
+                if(conn != null) {
+                    conn.close();
+                }
+            } catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return edited;
+    }
+    /*public boolean editUser(User user) {
         boolean edited = false;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -262,5 +304,27 @@ public class UserDB {
             }
         }
         return edited;
+    }*/
+    
+        public boolean deleteUser(String name) {
+        boolean isDeleted = false;
+        int result = 0;
+        
+        try {
+            DatabaseConnection dbc = new DatabaseConnection();
+            Connection conn = (Connection) dbc.getConnection();
+            String sql = "DELETE FROM useraccount WHERE user_name = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, name);
+            
+            result = stmt.executeUpdate(); // if id = 0 then product is not added
+            if(result == 1) {
+                isDeleted = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return isDeleted;
     }
 }
